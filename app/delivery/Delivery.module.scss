@@ -1,0 +1,50 @@
+.delivery {
+    color: #56392F;
+    font-family: 'Circe-Regular';
+    &_wrapper {
+        display: flex;
+    }
+    &_title {
+        font-family: 'Circe-Bold';
+        font-size: 44px;
+        line-height: 52px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    &_description {
+        font-size: 20px;
+
+        p {
+            margin-bottom: 15px;
+            &:last-child {
+                margin-bottom: 30px;
+            }
+            & > span {
+                font-family: 'Circe-Bold';
+                font-size: 16px;
+            }
+            &:before {
+                content: '';
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                border-radius: 4px;
+                margin-right: 10px;
+                background-color: rgb(50, 206, 50);
+                // background-color: #cf3128;
+            }
+        }
+    }
+    div { // заглушка
+        &:last-child {
+            margin-bottom: 50px;
+        }
+    }
+}
+
+
+// .title {
+//     color: blueviolet;    
+//     text-align: center;
+//     background-color: aquamarine;
+// }

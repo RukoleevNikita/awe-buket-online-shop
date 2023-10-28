@@ -1,0 +1,15 @@
+.footer {
+    position: relative;
+    svg {
+        &:first-child {
+            top: -57px;
+        }   
+        &:last-child {
+            bottom: -70px;
+        }
+    }
+    & > svg {
+        position: absolute;
+        z-index: -1;
+    }
+}

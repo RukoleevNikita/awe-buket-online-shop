@@ -1,0 +1,85 @@
+h1 {
+    color: #56392F;
+    text-align: center;
+    padding: 10px 0;
+}
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+.orderForm {
+    width: 50%;
+    padding-right: 50px;
+    button {
+        background: #cf3128;
+        border-radius: 10px;
+        font-size: 16px;
+        color: #FDF3E5;
+        width: 200px;
+        height: 52px;
+        margin: 17px 0;
+        cursor: pointer;
+        transition: 0.4s;
+        &:hover {
+            background: #F8897E;
+            color: white;
+        }
+    }
+}
+.order {
+    width: 50%;
+    padding-left: 50px;
+    &__price {
+        font-size: 40px;
+        line-height: 52px;
+        color: #56392F;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-top: 30px;
+        border-top: 0;
+        border-top: 1px solid #EB3E37;
+        margin-bottom: 15px;
+        padding-bottom: 20px;
+        span {
+            font-weight: bold;
+        }
+    }
+}
+
+.toggleBlock {
+    display: flex;
+    align-items: center;
+    p {
+        color: #56392F;;
+        font-size: 16px;
+    }
+}
+
+.customToggle {
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 2px 2px 2px 6px;
+    cursor: pointer;
+    margin-right: 10px;
+  
+    .toggleSlider {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background-color: white;
+      transition: transform 0.3s ease;
+    }
+  
+    &.active {
+      background-color: #cf3128;
+  
+      .toggleSlider {
+        transform: translateX(30px);
+      }
+    }
+  }

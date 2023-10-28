@@ -1,0 +1,39 @@
+.corporativeClients {
+    color: #56392F;
+    font-family: 'Circe-Regular';
+    &_title {
+        font-family: 'Circe-Bold';
+        font-size: 44px;
+        line-height: 52px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    &_description {
+        font-size: 20px;
+        p {
+            margin-bottom: 15px;
+        }
+        div {
+            & > p {
+                & > span {
+                    font-family: 'Circe-Bold';
+                    font-size: 20px;
+                }
+                &::before {
+                    content: '';
+                    display: inline-block;
+                    width: 14px;
+                    height: 14px;
+                    border-radius: 4px;
+                    margin-right: 10px;
+                    background-color: rgb(50, 206, 50);
+                }
+            }
+        }
+    }
+    div { // заглушка
+        &:last-child {
+            margin-bottom: 50px;
+        }
+    }
+}

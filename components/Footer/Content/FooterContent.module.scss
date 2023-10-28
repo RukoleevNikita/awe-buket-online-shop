@@ -1,0 +1,55 @@
+.footerContent {
+    background-color: #2B2A29;
+    color: white;
+    margin-top: -5px;
+    // display: flex;
+    &_wrapper {
+        display: flex;
+        justify-content: space-between;
+        & > div {
+            width: 377px;
+        }
+    }
+    &__blockOne {
+        &_logo {
+            height: 90px;
+        }
+        & > ul {
+            & > li {
+                display: flex;
+                align-items: center;
+                & > svg {
+                    margin-right: 12px;
+                }
+                a {
+                    color: white;
+                }
+            }
+            & > li:first-child a {
+               margin-right: 12px;
+            }
+            & > li:not(:last-child) {
+                margin-bottom: 18px;
+            }
+            li:last-child {
+                display: flex;
+                align-items: center;
+                span {
+                    margin-right: 10px;
+                    font-size: 16px;
+                }
+                ul {
+                    display: flex;
+                    align-items: center;
+                    li {
+                        margin-right: 8px;
+                        
+                    }
+                    li:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
