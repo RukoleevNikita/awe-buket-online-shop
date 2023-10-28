@@ -1,3 +1,4 @@
+'use client';
 import { useState, useCallback, useRef } from 'react';
 
 export const useHover = () => {
@@ -9,7 +10,7 @@ export const useHover = () => {
   const nodeRef = useRef();
 
   const callbackRef = useCallback(
-    (node) => {
+    node => {
       if (nodeRef.current) {
         nodeRef.current.removeEventListener('mouseover', handleMouseOver);
         nodeRef.current.removeEventListener('mouseout', handleMouseOut);

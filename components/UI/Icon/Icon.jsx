@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './Icon.module.scss';
 
 export const Icon = ({ id, color }) => {

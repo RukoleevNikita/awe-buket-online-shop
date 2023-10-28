@@ -1,5 +1,7 @@
+
 import './globals.scss';
 import {Footer, Header, MainWrapper} from '@/components';
+// import { StoreProvider } from '@/redux/StoreProvider';
 
 
 export const metadata = {
@@ -12,12 +14,13 @@ export default function RootLayout({ children }) {
     <html lang="ru">
       <body>
         <Header/>
+        {/*<StoreProvider>*/}
         <MainWrapper>
           {children}
         </MainWrapper>
+        {/*</StoreProvider>*/}
         <Footer/>
       </body>
-
     </html>
   );
 }

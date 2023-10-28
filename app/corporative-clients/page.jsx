@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { Container } from '../../components';
-import { MainWrapper } from '../../components';
+import { Container , MainWrapper } from '@/components';
 
 import styles from './CorporativeClients.module.scss';
 
-export const CorporativeClients = () => {
+export default function CorporativeClients () {
   return (
     <Container>
       <MainWrapper>
@@ -45,4 +44,5 @@ export const CorporativeClients = () => {
       </MainWrapper>
     </Container>
   );
-};
+}
+

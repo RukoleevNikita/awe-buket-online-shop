@@ -1,31 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-import axios from '../../axios';
-
-// export const fetchProducts = createAsyncThunk('getallproducts/fetchProducts', async () => {
-//   const { data } = await axios.get('/getallproducts');
-
-//   return data;
-// });
-
-// export const fetchProductsAdmin = createAsyncThunk('getallproducts/fethProductsAdmin', async () => {
-//   const { data } = await axios.get('/admin-panel/getallproducts');
-
-//   return data;
-// });
-
-// export const createProduct = createAsyncThunk('add-product/fetchCreateProduct', async (createProductData) => {
-//   const { data } = await axios.post('/admin-panel/createproduct', createProductData);
-
-//   return data;
-// });
-
-const calcTotalPrice = (items) => {
-  return items.reduce((sum, obj) => obj.price * obj.count + sum, 0);
-};
-const calcTotalCount = (items) => {
-  return items.reduce((sum, item) => sum + item.count, 0);
-};
+const calcTotalPrice = items => items.reduce((sum, obj) => obj.price * obj.count + sum, 0);
+const calcTotalCount = items => items.reduce((sum, item) => sum + item.count, 0);
 
 const initialState = {
   items: [],
@@ -38,7 +13,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      const findItem = state.items.find((obj) => obj.id === action.payload.id);
+      const findItem = state.items.find(obj => obj.id === action.payload.id);
 
       if (findItem) {
         findItem.count++;
@@ -54,7 +29,7 @@ const cartSlice = createSlice({
     },
 
     minusItem(state, action) {
-      const findItem = state.items.find((obj) => obj.id === action.payload.id);
+      const findItem = state.items.find(obj => obj.id === action.payload.id);
 
       if (findItem) {
         findItem.count--;
@@ -65,7 +40,7 @@ const cartSlice = createSlice({
     },
 
     removeItem(state, action) {
-      state.items = state.items.filter((obj) => obj.id !== action.payload);
+      state.items = state.items.filter(obj => obj.id !== action.payload);
       state.totalPrice = calcTotalPrice(state.items);
       state.totalCount = calcTotalCount(state.items);
     },

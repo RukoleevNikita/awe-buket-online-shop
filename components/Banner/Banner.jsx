@@ -1,10 +1,9 @@
-import banner from '../../assets/images/banner.jpg';
+import Image from 'next/image';
+import banner from '@/public/images/banner.jpg';
 
 import styles from './Banner.module.scss';
-export const Banner = (props) => {
-  return (
-    <div className={styles.banner}>
-      <img src={banner} alt="" />
-    </div>
-  );
-};
+export const Banner = () => (
+  <div className={styles.banner}>
+    <Image src={banner} alt="" />
+  </div>
+);

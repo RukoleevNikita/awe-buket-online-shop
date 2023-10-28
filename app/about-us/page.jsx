@@ -7,17 +7,16 @@ import {
   Image4,
   Image5,
   Image6,
-  Image7,
   Image8,
   Image9,
   Image10,
   Image11,
-} from '../../assets/images/aboutUs/index.js';
-import { Container } from '../../components';
-
+} from '@/public/images/aboutUs/index';
+import { Container } from '@/components';
+import Image from 'next/image';
 import styles from './AboutUs.module.scss';
 
-export const AboutUs = () => {
+export default function AboutUs () {
   return (
     <Container>
       <h1 className={styles.title}>Pege AboutUs</h1>
@@ -51,18 +50,18 @@ export const AboutUs = () => {
         предоплате 5000₽, в случае отмены записи минимум чем за 2 недели до начала курса, предоплата не возвращается.
       </p>
       <div>
-        <img src={Image1} alt="" className={styles.img} />
-        <img src={Image2} alt="" className={styles.img} />
-        <img src={Image3} alt="" className={styles.img} />
-        <img src={Image4} alt="" className={styles.img} />
-        <img src={Image5} alt="" className={styles.img} />
+        <Image src={Image1} alt="" className={styles.img} />
+        <Image src={Image2} alt="" className={styles.img} />
+        <Image src={Image3} alt="" className={styles.img} />
+        <Image src={Image4} alt="" className={styles.img} />
+        <Image src={Image5} alt="" className={styles.img} />
       </div>
       <div>
-        <img src={Image6} alt="" className={styles.img} />
-        <img src={Image8} alt="" className={styles.img} />
-        <img src={Image9} alt="" className={styles.img} />
-        <img src={Image10} alt="" className={styles.img} />
-        <img src={Image11} alt="" className={styles.img} />
+        <Image src={Image6} alt="" className={styles.img} />
+        <Image src={Image8} alt="" className={styles.img} />
+        <Image src={Image9} alt="" className={styles.img} />
+        <Image src={Image10} alt="" className={styles.img} />
+        <Image src={Image11} alt="" className={styles.img} />
       </div>
     </Container>
   );

@@ -1,9 +1,9 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import styles from './Categories.module.scss';
-
-export const Categories = ({ eventHandler, activeIndex }) => {
+export function Categories({ params, onCategorySelect = () => undefined }) {
   const CATEGORIES = [
     'Наборы клубники в шоколаде',
     'Букеты из клубники в шоколаде',
@@ -18,25 +18,32 @@ export const Categories = ({ eventHandler, activeIndex }) => {
     'Шоколад ручной работы',
     'Фруктовые букеты',
     'Цветы',
-    'Открытки и топперы',
+    'Открытки и топперы'
   ];
-  const location = useLocation();
-  // if (location.state != null) activeIndex = location.state.id;
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
+  const handleCategoryClick = category => {
+    setSelectedCategory(category);
+    onCategorySelect(category);
+  };
+  const pathname = usePathname();
   return (
     <ul
       className={
-        location.pathname === '/collection' ? styles.category__navigation : styles.category__navigation_pullDownMenu
+        // pathname === '/collection' ? styles.category__navigation : styles.category__navigation_pullDownMenu
+        pathname === '/collection' ? styles.category__navigation : styles.category__dropdownList
       }
     >
       {CATEGORIES.map((el, id) => (
-        <li
+        <Link
+          onClick={() => handleCategoryClick(el)}
+          href={{ pathname: '/collection', query: { category: el } }}
+          // href="#"
           key={id}
-          onClick={() => eventHandler(id, CATEGORIES[id])}
-          className={location.pathname === '/collection' && activeIndex === id ? styles.active : ''}
+          className={el === params && pathname.split('/').includes('collection') ? styles.active : ''}
         >
           <span>{el}</span>
-        </li>
+        </Link>
       ))}
     </ul>
   );

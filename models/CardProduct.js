@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const ProductShema = new mongoose.Schema({
+const ProductSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -23,7 +23,7 @@ const ProductShema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
     required: true,
   },
   category: {
@@ -40,4 +40,5 @@ const ProductShema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("CardProduct", ProductShema);
+const CardProduct = mongoose.models.CardProduct || mongoose.model('CardProduct', ProductSchema);
+export default CardProduct;

@@ -36,7 +36,7 @@ export const Occasion = () => {
   const [activeIndex, setActiveIndex] = useState();
   const [occasion, setOccasion] = useState('1 сентября, учителю');
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { products } = useSelector(state => state.products);
   const { sortedProduct, setSelectedSort } = useSort(products.items || []);
   const location = useLocation();
 
@@ -103,10 +103,10 @@ export const Occasion = () => {
           <div className={styles.products}>
             {/* проверить есть ли товары в БД */}
             {sortedProduct.length !== 0
-              ? sortedProduct.map((el) => <ProductsCards key={el._id} {...el} />)
+              ? sortedProduct.map(el => <ProductsCards key={el._id} {...el} />)
               : activeIndex
-              ? 'Товары в катеогрии отсутствуют'
-              : 'Необходимо выбрать категорию товара'}
+                ? 'Товары в катеогрии отсутствуют'
+                : 'Необходимо выбрать категорию товара'}
           </div>
         </div>
       </Container>
@@ -168,5 +168,5 @@ export const Occasion = () => {
   */
 
 // products.items.length && products.items.map((el) => (
-//   <ProductsCards key={el._id} {...el} />
+//   <ProductCard key={el._id} {...el} />
 // ))

@@ -1,57 +1,42 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import useSWR from 'swr';
 import { useSort } from '@/hooks';
 import { Categories, Container, ProductCard } from '@/components';
-import styles from './CollectionProduct.module.scss';
 import { useSearchParams } from 'next/navigation';
-// import { useDispatch } from 'react-redux';
-// import { useDispatch, useSelector } from "react-redux";
+import { getCollection } from '@/services/index';
+import styles from './ProductCollection.module.scss';
 
-export function productCollection({collection}){
-  const [activeIndex, setActiveIndex] = useState();
-  const [category, setCategory] = useState('Наборы клубники в шоколаде');
+export function ProductCollection() {
+  const { data, isLoading } = useSWR('collection', getCollection);
   const searchParams = useSearchParams();
   const params = searchParams.get('category');
-  console.log(params);
-
-  // const dispatch = useDispatch();
-  // const { products } = useSelector(state => state.products);
-  const { sortedProduct, setSelectedSort } = useSort(collection || []);
-  // const location = useLocation();
+  const { sortedProduct, setSelectedSort } = useSort(data || []);
+  const handleCategorySelect = selectedCategory => {
+    setSelectedSort(selectedCategory);
+  };
   useEffect(() => {
-    // dispatch(fetchProducts());
-    // console.log('products ', products);
-    if (location.state != null) {
-      setCategory(location.state.category);
-      setActiveIndex(location.state.id);
-      setSelectedSort(location.state.category);
-    }
+    setSelectedSort(params);
   }, []);
 
-  const eventHandler = (id, category) => {
-    setCategory(category);
-    setActiveIndex(id);
-    setSelectedSort(category);
-  };
   return (
     <Container>
       <div className={styles.wrapper}>
         <div className={styles.category}>
           <nav>
-            <Categories params={params} />
+            <Categories params={params} onCategorySelect={handleCategorySelect} />
           </nav>
         </div>
         <div className={styles.products}>
-          {/* проверить есть ли товары в БД */}
-          {collection.length !== 0
-            ? collection.map(el => <ProductCard key={el._id} {...el} />)
-            : activeIndex
-              ? 'Товары в катеогрии отсутствуют'
-              : 'Необходимо выбрать категорию товара'}
+          {!isLoading
+            ? sortedProduct.map(el => <ProductCard key={el._id} {...el} />)
+            :'Товары в катеогрии отсутствуют'
+          }
         </div>
       </div>
     </Container>
   );
 }
+
 
 
