@@ -38,7 +38,9 @@ export default function Delivery () {
                 <span>&#8195;&#8195;С 7:00 до 9:00 и с 21:00 до 00:00 - 500₽</span>
               </p>
             </div>
-            <Map />
+            <div className={styles.delivery_map}>
+              <Map />
+            </div>
           </div>
         </div>
       </MainWrapper>

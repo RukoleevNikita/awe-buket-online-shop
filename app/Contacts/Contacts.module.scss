@@ -1,4 +1,25 @@
 .title {
-    color: grey;    
-    text-align: center;
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 52px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.content {
+  font-family: 'Circe';
+  font-size: 20px;
+  color: #56392f;
+  p {
+    margin-bottom: 1em;
+  }
+  ul {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
 }
