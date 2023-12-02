@@ -24,30 +24,32 @@
     border-radius: 10px;
     position: absolute;
     top: 56px;
-    display: grid !important;
+    display: grid;
     grid-template-columns: 231px 231px 231px;
     background: #fff;
     color: #cf3128;
-    width: 693px !important;
+    width: 693px;
     left: 0;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     padding: 10px;
     z-index: 10;
     a {
-        cursor: pointer;
-        justify-content: flex-start !important;
-        align-items: center !important;
-        padding: 0 !important;
+        display: flex;
+        align-items: center;
+        color: #56392F;
+        border-radius: 10px;
+        justify-content: flex-start;
 
         span {
             padding: 7px;
         }
 
-        //:hover {
-        //    color: #56392F !important;
-        //    border-radius: 10px;
-        //    background: #EED1B5;
-        //}
+        &:hover {
+            color: white;
+            border-radius: 10px;
+            background: #56392F;
+            transition: 0.4s;
+        }
     }
 }
 .active {

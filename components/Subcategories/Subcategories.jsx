@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import styles from './Subcategories.module.scss';
 import Link from 'next/link';
@@ -25,16 +24,18 @@ export const Subcategories = ({ selectCategory }) => {
       ],
     },
   ];
+
   const [columns, setColumns] = useState([]);
 
   const pathname = usePathname();
   const trigger = pathname.split('/').includes('occasion');
-  console.log(trigger);
   useEffect(() => {
     const columnsData = SUBCATEGORIES.map(category => {
       const [columnTitle, columnData] = Object.entries(category)[0];
+
       return (
         <div key={columnTitle}>
+          {/*<div key={columnTitle}>*/}
           <h4>{`${columnTitle}: `}</h4>
           {columnData.map((el, id) => (
             <Link key={id} href={{ pathname: `/occasion/${el}` }}>
@@ -47,5 +48,5 @@ export const Subcategories = ({ selectCategory }) => {
     setColumns(columnsData);
   }, []);
 
-  return <>{trigger ? 'asdasdas' : columns}</>;
+  return <nav className={trigger ? styles.subcategories__navigation : styles.subcategories__dropdownList}>{columns}</nav>;
 };

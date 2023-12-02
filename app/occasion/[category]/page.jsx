@@ -1,142 +1,25 @@
 'use client';
-// import { useState, useEffect } from 'react';
-//
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useParams, useLocation } from 'react-router-dom';
-//
-// import axios from '../../axios';
-//
-// import { Subcategories } from '../../components/Subcategories/Subcategories';
-// import { Container, ProductsCards } from '../../components/index';
-//
-// import { useSort } from '../../hooks/useSort';
-// import { fetchProducts, fetchProductsCat } from '../../redux/slices/productsSlice';
-
 import styles from './Occasion.module.scss';
 import useSWR from 'swr';
-import { getCollection, getProductsOccasion } from '@/services';
-import { useSearchParams } from 'next/navigation';
-import { ProductCollection } from '@/components';
-
-// async function test(id) {
-//   try {
-//     const res = await fetch(`http://localhost:3001/api/occation/${id}`);
-//     console.log('asdasdasdasda', res);
-//     return res.json();
-//   } catch (e) {
-//     console.log(e);
-//   }
-// };
+import { getProductsOccasion } from '@/services';
+import { Container, ProductCollection } from '@/components';
+import { Subcategories } from '@/components/Subcategories/Subcategories';
 
 export default function Occasion({params}) {
-  // const [activeIndex, setActiveIndex] = useState();
-  // const [occasion, setOccasion] = useState('1 сентября, учителю');
-  // const dispatch = useDispatch();
-  // const { products } = useSelector(state => state.products);
-  // const { sortedProduct, setSelectedSort } = useSort(products.items || []);
-  // const location = useLocation();
-  const SUBCATEGORIES = [
-    'Маме',
-    'Любимой',
-    'Мужчине',
-    'Коллеге',
-    'День рождения',
-    'Свадьба',
-    'Рождение ребенка',
-    'Выпускной',
-    'Последний звонок',
-    'Годовщина',
-    '1 сентября, учителю',
-    'День матери',
-    'Новый год',
-    '14 февраля',
-    '23 февраля',
-    '8 марта',
-    'День семьи',
-  ];
   const { data, isLoading } = useSWR(['occasion', params.category], getProductsOccasion);
   return (
-    <ProductCollection data={data ? data : []} category={params.category} />
+    <Container>
+      <div className={styles.wrapper}>
+        <div className={styles.ocation}>
+          <nav>
+            <Subcategories selectCategory={decodeURIComponent(params.category)} />
+          </nav>
+        </div>
+        <ProductCollection data={data ? data : []} />
+      </div>
+    </Container>
   );
 };
-
-
-
-
-// useEffect(() => {
-//   dispatch(fetchProducts());
-//   if (location.state != null) {
-//     setOccasion(location.state.occasion);
-//     setActiveIndex(location.state.id);
-//     setSelectedSort(location.state.occasion);
-//   }
-// }, [dispatch]);
-
-// const eventHandler = (id, occasion) => {
-//   setOccasion(occasion);
-//   setActiveIndex(id);
-//   setSelectedSort(occasion);
-// };
-// (
-
-// <main>
-//   <Container>
-//     <div className={styles.wrapper}>
-//       <div className={styles.subcategories}>
-//         <nav>
-//           <>
-//             <div className={styles.subcategories__navigation}>
-//               <h4>Кому: </h4>
-//               {SUBCATEGORIES.slice(0, 4).map((el, id) => (
-//                 <div
-//                   key={id}
-//                   onClick={() => eventHandler(id, el, 'subcategories')}
-//                   className={location.pathname === '/occasion' && occasion === el ? styles.active : ''}
-//                 >
-//                   {el}
-//                 </div>
-//               ))}
-//             </div>
-//             <div className={styles.subcategories__navigation}>
-//               <h4>Событие: </h4>
-//               {SUBCATEGORIES.slice(4, 10).map((el, id) => (
-//                 <div
-//                   key={id}
-//                   onClick={() => eventHandler(id, el, 'subcategories')}
-//                   className={location.pathname === '/occasion' && occasion === el ? styles.active : ''}
-//                 >
-//                   {el}
-//                 </div>
-//               ))}
-//             </div>
-//             <div className={styles.subcategories__navigation}>
-//               <h4>Праздник: </h4>
-//               {SUBCATEGORIES.slice(10, 17).map((el, id) => (
-//                 <div
-//                   key={id}
-//                   onClick={() => eventHandler(id, el, 'subcategories')}
-//                   className={location.pathname === '/occasion' && occasion === el ? styles.active : ''}
-//                 >
-//                   {el}
-//                 </div>
-//               ))}
-//             </div>
-//           </>
-//         </nav>
-//       </div>
-//       <div className={styles.products}>
-//         {/* проверить есть ли товары в БД */}
-//         {sortedProduct.length !== 0
-//           ? sortedProduct.map(el => <ProductsCards key={el._id} {...el} />)
-//           : activeIndex
-//             ? 'Товары в катеогрии отсутствуют'
-//             : 'Необходимо выбрать категорию товара'}
-//       </div>
-//     </div>
-//   </Container>
-// </main>
-//   )
-// ;
 
 // add loading
 // loader

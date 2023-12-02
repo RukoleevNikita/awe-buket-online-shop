@@ -1,72 +1,25 @@
 'use client';
-// import { useParams, useLocation } from 'react-router-dom';
-//
-// import axios from '../../axios';
-//
-// import { Categories } from '../../components/Categories/Categories';
-// import { Container, ProductCard } from '../../components/index';
-//
-import { useSort } from '@/hooks/useSort';
-// import { fetchProducts, fetchProductsCat } from '../../redux/slices/productsSlice';
-//
 
 import { Categories, Container, ProductCollection } from '@/components';
-import { getCollection, getProductsOccasion } from '@/services';
+import { getCollection } from '@/services';
 import useSWR from 'swr';
+import styles from './Collection.module.scss';
 export default function Collection({params}) {
   const { data, isLoading } = useSWR(['collection', params.category], getCollection);
   return (
-    <ProductCollection data={data ? data : []} category={params.category} />
+    <Container>
+      <div className={styles.wrapper}>
+        <div className={styles.category}>
+          <nav>
+            <Categories selectCategory={decodeURIComponent(params.category)} />
+          </nav>
+        </div>
+        <ProductCollection data={data ? data : []} />
+      </div>
+    </Container>
   );
-}
-// /collection/[category]/page
-// /api/occasion/[category]/route
-// export const ProductCollection = () => {
-//   const [activeIndex, setActiveIndex] = useState();
-//   const [category, setCategory] = useState('Наборы клубники в шоколаде');
-//   const dispatch = useDispatch();
-//   const { products } = useSelector(state => state.products);
-//   const { sortedProduct, setSelectedSort } = useSort(products.items || []);
-//   const location = useLocation();
-//
-//   useEffect(() => {
-//     dispatch(fetchProducts());
-//     console.log('products ', products);
-//     if (location.state != null) {
-//       setCategory(location.state.category);
-//       setActiveIndex(location.state.id);
-//       setSelectedSort(location.state.category);
-//     }
-//   }, [dispatch]);
-//
-//   const eventHandler = (id, category) => {
-//     setCategory(category);
-//     setActiveIndex(id);
-//     setSelectedSort(category);
-//   };
-//   return (
-//     <main>
-//       <Container>
-//         <div className={styles.wrapper}>
-//           <div className={styles.category}>
-//             <nav>
-//               <Categories activeIndex={activeIndex} eventHandler={eventHandler} />
-//             </nav>
-//           </div>
-//           <div className={styles.products}>
-//             {/* проверить есть ли товары в БД */}
-//             {sortedProduct.length !== 0
-//               ? sortedProduct.map(el => <ProductCard key={el._id} {...el} />)
-//               : activeIndex
-//                 ? 'Товары в катеогрии отсутствуют'
-//                 : 'Необходимо выбрать категорию товара'}
-//           </div>
-//         </div>
-//       </Container>
-//     </main>
-//   );
-// };
-//
+};
+
 // // add loading
 // // loader
 // /*
@@ -119,34 +72,3 @@ export default function Collection({params}) {
 //       100% { transform: scale(2); }
 //     }
 //   */
-//
-// // products.items.length && products.items.map((el) => (
-// //   <ProductCard key={el._id} {...el} />
-// // ))
-
-
-
-// import { Categories, Container, Product, ProductCollection } from '@/components';
-// import { redirect } from 'next/navigation';
-// // import { useSelector } from 'react-redux';
-//
-// async function getProduct(id) {
-//   try {
-//     const res = await fetch(`http://localhost:3001/api/collection/${id}`);
-//     console.log(id);
-//     return res.json();
-//   } catch (e) {
-//     console.log(e);
-//   }
-// };
-// export default async function WrapperPageProduct({params}) {
-//   // console.log('params', params);
-//   // const product = await getProduct(params.id);
-//   // const { products } = useSelector(state => state.products);
-//   // console.log('product ', product);
-//   // const { sortedProduct, setSelectedSort } = useSort(collection || []);
-//   // console.log(sortedProduct);
-//   return (
-//     <Product />
-//   );
-// }
