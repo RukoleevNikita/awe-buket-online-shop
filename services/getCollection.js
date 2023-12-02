@@ -1,7 +1,7 @@
-export default async () => {
+export default async category => {
   try {
-    const res = await fetch('http://localhost:3000/api/collection');
-    console.log(res);
+    console.log(category);
+    const res = await fetch(`http://localhost:3000/api/collection/${category[1]}`);
     return res.json();
   } catch (e) {
     console.log(e);

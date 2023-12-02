@@ -19,8 +19,8 @@ import { Container } from '@/components';
 import { Slider } from '@/components/Slider/Slider';
 export function Product() {
 // export const Product = ({product}) => {
-//   const { data, isLoading } = useSWR(`/api/products/${id}', getProduct);
-//   console.log('data ', params);
+//   const { data, isLoading } = useSWR(`/api/products/${id}`, getProduct);
+//   console.log('data ', data);
   // const dispatch = useDispatch();
   // // const addedCount = useSelector(state => state.cart.items.find(obj => obj.id === id));
   // const [data, setData] = React.useState();

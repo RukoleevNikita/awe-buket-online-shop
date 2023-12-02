@@ -1,4 +1,4 @@
-// import { useDispatch, useSelector } from 'react-redux';
+'use client';
 // import { useParams, useLocation } from 'react-router-dom';
 //
 // import axios from '../../axios';
@@ -11,31 +11,16 @@ import { useSort } from '@/hooks/useSort';
 //
 
 import { Categories, Container, ProductCollection } from '@/components';
-import { redirect } from 'next/navigation';
-// import { getCollection } from '@/services';
-// import { useSelector } from 'react-redux';
-
-async function getCollection() {
-  try {
-    const res = await fetch('http://localhost:3001/api/collection');
-    return res.json();
-  } catch (e) {
-    console.log(e);
-  }
-};
-export default async function WrapperPageCollection() {
-  // const collection = await getCollection();
-  // console.log('collection', collection);
-  // const { products } = useSelector(state => state.products);
-  // console.log(products);
-  // const { sortedProduct, setSelectedSort } = useSort(collection || []);
-  // console.log(sortedProduct);
+import { getCollection, getProductsOccasion } from '@/services';
+import useSWR from 'swr';
+export default function Collection({params}) {
+  const { data, isLoading } = useSWR(['collection', params.category], getCollection);
   return (
-    // <div>as</div>
-    <ProductCollection />
+    <ProductCollection data={data ? data : []} category={params.category} />
   );
 }
-
+// /collection/[category]/page
+// /api/occasion/[category]/route
 // export const ProductCollection = () => {
 //   const [activeIndex, setActiveIndex] = useState();
 //   const [category, setCategory] = useState('Наборы клубники в шоколаде');
@@ -138,3 +123,30 @@ export default async function WrapperPageCollection() {
 // // products.items.length && products.items.map((el) => (
 // //   <ProductCard key={el._id} {...el} />
 // // ))
+
+
+
+// import { Categories, Container, Product, ProductCollection } from '@/components';
+// import { redirect } from 'next/navigation';
+// // import { useSelector } from 'react-redux';
+//
+// async function getProduct(id) {
+//   try {
+//     const res = await fetch(`http://localhost:3001/api/collection/${id}`);
+//     console.log(id);
+//     return res.json();
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
+// export default async function WrapperPageProduct({params}) {
+//   // console.log('params', params);
+//   // const product = await getProduct(params.id);
+//   // const { products } = useSelector(state => state.products);
+//   // console.log('product ', product);
+//   // const { sortedProduct, setSelectedSort } = useSort(collection || []);
+//   // console.log(sortedProduct);
+//   return (
+//     <Product />
+//   );
+// }

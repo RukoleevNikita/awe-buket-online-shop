@@ -19,6 +19,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 import { Categories, Container, Icon } from '@/components';
 import Link from 'next/link';
+import { Subcategories } from '@/components/Subcategories/Subcategories';
 
 export function Navigation() {
   const pathname = usePathname();
@@ -67,9 +68,7 @@ export function Navigation() {
                 <Icon id="squares" />
                 <span>Каталог</span>
               </Link>
-              {/*<div className={pathname === '/collection' ? styles.hideDropdownCategoriesList : styles.dropdownCategoriesList}>*/}
-              <div className={pathname === '/collection' ? styles.hideDropdownCategoriesList : styles.dropdownCategoriesList}>
-                {/*<Categories activeIndex={activeIndex} eventHandler={eventHandlerCategories} />*/}
+              <div className={pathname.split('/').includes('collection') ? styles.hideDropdownCategoriesList : styles.dropdownCategoriesList}>
                 <Categories params={''} />
               </div>
             </li>
@@ -87,10 +86,21 @@ export function Navigation() {
               </Link>
             </li>
             <li style={{ position: 'relative' }}>
+              <li style={{ position: 'relative' }}>
+                {/*<Link style={{ cursor: 'default' }} href="#" className={setActive}>*/}
+                <Link style={{ cursor: 'default' }} href="#">
+                  <span>Повод</span>
+                </Link>
+                {/*<div className={pathname === '/collection' ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>*/}
+                <div className={pathname === '/occasion' ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>
+                  {/*<Categories activeIndex={activeIndex} eventHandler={eventHandlerCategories} />*/}
+                  <Subcategories params={''} />
+                </div>
+              </li>
               {/*<Link style={{ cursor: 'default' }} href="#" className={setActive}>*/}
-              <Link style={{ cursor: 'default' }} href="#">
-                <span>Повод</span>
-              </Link>
+              {/*<Link style={{ cursor: 'default' }} href="#">*/}
+              {/*  <span>Повод</span>*/}
+              {/*</Link>*/}
               {/*<div className={location.pathname === '/occasion' ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>*/}
               {/*<Subcategories activeCategory={category} eventHandler={eventHandlerSubcategories} />*/}
               {/*</div>*/}
