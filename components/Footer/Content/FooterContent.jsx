@@ -1,9 +1,12 @@
 // import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import logo from '../../../assets/images/logo.png';
-import { Container } from '../../Container/Container';
-import { Icon } from '../../UI/Icon/Icon';
+// import logo from '../../../assets/images/logo.png';
+import logo from '@/public/images/logo.png';
+// import { Container } from '../../Container/Container';
+import { Container } from '../../index';
+import { Icon } from '../../UI/index';
 
 import styles from './FooterContent.module.scss';
 
@@ -15,8 +18,8 @@ export const FooterContent = () => {
           <div className={styles.footerContent__blockOne}>
             <ul>
               <li>
-                <Link to="/">
-                  <img src={logo} className={styles.footerContent__blockOne_logo} alt="logo" />
+                <Link href="/">
+                  <Image src={logo} className={styles.footerContent__blockOne_logo} alt="logo" />
                 </Link>
                 Awebuket | Съедобные букеты | Клубника Омск
               </li>
@@ -39,22 +42,22 @@ export const FooterContent = () => {
                 <span>Написать нам:</span>
                 <ul>
                   <li>
-                    <Link to="#" rel="noopener noreferrer nofollow" target="_blank">
+                    <Link href="#" rel="noopener noreferrer nofollow" target="_blank">
                       <Icon id="vk" color="white" />
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" rel="noopener noreferrer nofollow" target="_blank">
+                    <Link href="#" rel="noopener noreferrer nofollow" target="_blank">
                       <Icon id="tg" color="white" />
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" rel="noopener noreferrer nofollow" target="_blank">
+                    <Link href="#" rel="noopener noreferrer nofollow" target="_blank">
                       <Icon id="whatsapp" color="white" />
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" rel="noopener noreferrer nofollow" target="_blank">
+                    <Link href="#" rel="noopener noreferrer nofollow" target="_blank">
                       <Icon id="viber" color="white" />
                     </Link>
                   </li>

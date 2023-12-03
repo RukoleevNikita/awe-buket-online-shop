@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { Container } from '../../components';
-import { MainWrapper } from '../../components';
+import { Container , MainWrapper } from '@/components';
 
 import styles from './CorporativeClients.module.scss';
 
-export const CorporativeClients = () => {
+export default function CorporativeClients () {
   return (
     <Container>
       <MainWrapper>
@@ -21,8 +20,8 @@ export const CorporativeClients = () => {
               вы можете заказать корпоративные подарки с доставкой по Омску
             </p>
 
+            <p>Если вас заинтересовало предложение, свяжитесь с нами!</p>
             <div>
-              Если вас заинтересовало предложение, свяжитесь с нами!
               <p>
                 Телефон: <span>+7 999 455 9503</span>
               </p>
@@ -45,4 +44,5 @@ export const CorporativeClients = () => {
       </MainWrapper>
     </Container>
   );
-};
+}
+

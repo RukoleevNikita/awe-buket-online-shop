@@ -1,9 +1,12 @@
 export * from './Header/Header';
 export * from './Footer/Footer';
-export * from './ProductsCards/ProductsCards';
+export * from './ProductCard/ProductCard';
+export * from './ProductCollection/ProductCollection';
 export * from './Container/Container';
 export * from './MainWrapper/MainWrapper';
-export * from './Cart';
+// export * from './cart';
 export * from './Banner';
-export * from './OfferBlock';
+// export * from './OfferBlock';
 export * from './UI';
+export * from './Map/Map';
+export * from './Categories/Categories';

@@ -1,58 +1,48 @@
+'use client';
 // import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-
-import { addItem, minusItem, removeItem } from '../../../redux/slices/cartSlice';
-import { Button } from '../../UI/Button/Button';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { Link } from 'react-router-dom';
+//
+// import { addItem, minusItem, removeItem } from '../../../redux/slices/cartSlice';
+// import { Button } from '../../UI/Button/Button';
 // import { addItem } from '../../redux/slices/cartSlice';
 
 import styles from './CartItem.module.scss';
+import { Button } from '@/components';
+import Link from 'next/link';
+import { useStore } from '@/store';
+import { shallow } from 'zustand/shallow';
 
-export const CartItem = (item) => {
-  const dispatch = useDispatch();
-  const { totalPrice, items } = useSelector((state) => state.cart);
+export const CartItem = item => {
+  const [ cart, addItem, removeItem, minusItem ] = useStore(state => [
+    state.cart,
+    state.addItem,
+    state.removeItem,
+    state.minusItem
+  ], shallow);
 
-  const onClickPlus = () => {
-    dispatch(
-      addItem({
-        id: item.id,
-      })
-    );
-  };
-  const onClickMinus = () => {
-    dispatch(
-      minusItem({
-        id: item.id,
-      })
-    );
-  };
   const onClickRemove = () => {
-    if (window.confirm('Ты действительно хочешь удалить товар?')) {
-      dispatch(removeItem(item.id));
-    }
+    // if (window.confirm('Ты действительно хочешь удалить товар?')) {
+    //   dispatch(removeItem(item.id));
+    // }
   };
-  // id: data._id,
-  // name: data.name,
-  // price: Number(data.price),
-  // previewUrl: data.previewUrl
-
   return (
     <div className={styles.cartItem}>
       <img src={item.previewLinks[0]} alt="" />
-      <Link to={`/product/${item.id}`} className={styles.cartItem__name}>
+      <Link href={`/collection/${item.category}/${item._id}`} className={styles.cartItem__name}>
         {item.name}
       </Link>
       {/* <div className={styles.cartItem__name}>{item.name}</div> */}
       <div className={styles.cartItem__countProduct}>
-        <Button onClick={onClickMinus}>
+        <Button onClick={() => minusItem(item._id)}>
           -
           {/* <svg width="12" height="2" viewBox="0 0 12 2" fill="none">
             <path d="M10.9958 0.991366H1.00326" stroke="#56392F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
           </svg> */}
         </Button>
         <span>{item.count}</span>
-        <Button onClick={onClickPlus}>
+        <Button onClick={() => addItem(item)}>
           +
           {/* <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path d="M10.9958 5.99137H1.00326" stroke="#56392F" strokeWidth="1.5" strokeWinecap="round" strokeLinejoin="round"></path>
@@ -61,7 +51,7 @@ export const CartItem = (item) => {
         </Button>
       </div>
       <div className={styles.cartItem__price}>{item.price} ₽</div>
-      <div className={styles.cartItem__del} onClick={onClickRemove}>
+      <div className={styles.cartItem__del} onClick={() => removeItem(item._id)}>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <g id="Iconly/Light/Delete">
             <g id="Delete">

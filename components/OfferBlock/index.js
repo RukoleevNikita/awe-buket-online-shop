@@ -1,1 +1,0 @@
-export { OfferBlock } from './OfferBlock';

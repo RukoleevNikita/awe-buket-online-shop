@@ -13,8 +13,12 @@
     &__blockOne {
         &_logo {
             height: 90px;
+            width: 90px;
         }
         & > ul {
+            li {
+                list-style-type: none;
+            }
             & > li {
                 display: flex;
                 align-items: center;
@@ -42,6 +46,7 @@
                     display: flex;
                     align-items: center;
                     li {
+                        list-style-type: none;
                         margin-right: 8px;
                         
                     }

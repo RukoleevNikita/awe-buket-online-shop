@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './MainWrapper.module.scss';
 
 export function MainWrapper({ children }) {

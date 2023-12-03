@@ -1,21 +1,7 @@
-import React, { useMemo, useState } from 'react';
-
-import { Container } from '../../components';
-import { MainWrapper } from '../../components';
-import Map from '../../components/Map/Map';
-
+import { Container , MainWrapper, Map } from '@/components';
 import styles from './Delivery.module.scss';
 
-export const Delivery = () => {
-  // const [x, setX] = useState(55);
-  // const onXChange = e => setX(e.target.value);
-
-  // const [y, setY] = useState(73.24);
-  // const onYChange = e => setY(e.target.value);
-
-  // const [zoom, setZoom] = useState(13);
-  // const onZoomChange = e => setZoom(e.target.value);
-
+export default function Delivery () {
   return (
     <Container>
       <MainWrapper>
@@ -52,7 +38,9 @@ export const Delivery = () => {
                 <span>&#8195;&#8195;С 7:00 до 9:00 и с 21:00 до 00:00 - 500₽</span>
               </p>
             </div>
-            <Map />
+            <div className={styles.delivery_map}>
+              <Map />
+            </div>
           </div>
         </div>
       </MainWrapper>

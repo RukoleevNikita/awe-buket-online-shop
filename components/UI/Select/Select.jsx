@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect, useRef } from 'react';
 import { Icon } from '../Icon/Icon';
 
@@ -19,24 +20,22 @@ export const Select = ({ label, options, onChange }) => {
     window.addEventListener('click', handler);
     return () => window.removeEventListener('click', handler);
   }, []);
-  const valueList = options.map((el, i) => {
-    return (
-      <li
-        className={styles.select__item}
-        key={i}
-        name="value"
-        onClick={() => {
-          setValue(el);
-          onChange(el);
-          // dataСollector({ value: el, name: 'value' });
-        }}
-      >
-        {el}
-      </li>
-    );
-  });
+  const valueList = options.map((el, i) => (
+    <li
+      className={styles.select__item}
+      key={i}
+      name="value"
+      onClick={() => {
+        setValue(el);
+        onChange(el);
+        // dataСollector({ value: el, name: 'value' });
+      }}
+    >
+      {el}
+    </li>
+  ));
   return (
-    <div>
+    <div className={styles.wrapper}>
       <label>{label}</label>
       <div className={styles.select} onClick={handleClickList}>
         <input className={styles.select__input} type="hidden" />

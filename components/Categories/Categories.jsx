@@ -1,9 +1,8 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import styles from './Categories.module.scss';
-
-export const Categories = ({ eventHandler, activeIndex }) => {
+export function Categories({ selectCategory }) {
   const CATEGORIES = [
     'Наборы клубники в шоколаде',
     'Букеты из клубники в шоколаде',
@@ -18,25 +17,24 @@ export const Categories = ({ eventHandler, activeIndex }) => {
     'Шоколад ручной работы',
     'Фруктовые букеты',
     'Цветы',
-    'Открытки и топперы',
+    'Открытки и топперы'
   ];
-  const location = useLocation();
-  // if (location.state != null) activeIndex = location.state.id;
-
+  const pathname = usePathname();
+  const trigger = pathname.split('/').includes('collection');
   return (
     <ul
       className={
-        location.pathname === '/collection' ? styles.category__navigation : styles.category__navigation_pullDownMenu
+        trigger ? styles.category__navigation : styles.category__dropdownList
       }
     >
       {CATEGORIES.map((el, id) => (
-        <li
+        <Link
+          href={{ pathname: `/collection/${el}` }}
           key={id}
-          onClick={() => eventHandler(id, CATEGORIES[id])}
-          className={location.pathname === '/collection' && activeIndex === id ? styles.active : ''}
+          className={selectCategory === el && trigger ? styles.active : ''}
         >
           <span>{el}</span>
-        </li>
+        </Link>
       ))}
     </ul>
   );

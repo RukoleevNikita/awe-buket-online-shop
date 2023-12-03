@@ -1,5 +1,5 @@
 .category__navigation  {
-    li {
+    a {
         position: relative;
         background: #FAF6F0;
         border-radius: 10px;
@@ -20,6 +20,38 @@
     }
 }
 
+.category__dropdownList {
+    border-radius: 10px;
+    position: absolute;
+    top: 56px;
+    display: grid;
+    grid-template-columns: 231px 231px 231px;
+    background: #fff;
+    color: #cf3128;
+    width: 693px;
+    left: 0;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 10;
+    a {
+        display: flex;
+        align-items: center;
+        color: #56392F;
+        border-radius: 10px;
+        justify-content: flex-start;
+
+        span {
+            padding: 7px;
+        }
+
+        &:hover {
+            color: white;
+            border-radius: 10px;
+            background: #56392F;
+            transition: 0.4s;
+        }
+    }
+}
 .active {
     background-color: #56392F !important;
     color: white !important;

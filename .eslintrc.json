@@ -1,3 +1,37 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "indent": ["error", 2],
+    "object-curly-newline": ["error", { "consistent": true }],
+    "function-paren-newline": ["error", "multiline-arguments"],
+    "@typescript-eslint/no-unsafe-argument": 0,
+    "linebreak-style": 0,
+    "import/no-unresolved": 0,
+    "import/prefer-default-export": 0,
+    "newline-per-chained-call": 0,
+    "comma-dangle": 0,
+    "lines-between-class-members": 0,
+    "class-methods-use-this": 0,
+    "arrow-parens": ["error", "as-needed"],
+    "arrow-body-style": ["error", "as-needed"],
+    "no-underscore-dangle": 0,
+    "no-useless-constructor": 0,
+    "import/no-duplicates": ["error"],
+    "max-len": [
+      "error",
+      {
+        "code": 150
+      }
+    ],
+    "no-param-reassign": 0,
+    "no-return-await": 0,
+    "react/no-unknown-property": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "import/no-extraneous-dependencies": "off",
+    "no-restricted-exports": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/no-cycle": 0
+  }
 }

@@ -1,3 +1,4 @@
+'use client';
 import { useState, useMemo } from 'react';
 
 export const useSort = (product, selected) => {
@@ -23,9 +24,9 @@ export const useSort = (product, selected) => {
     let sortableProduct = [...product];
     if (selectedSort === 'Все товары') return sortableProduct;
     if (CATEGORIES.includes(selectedSort)) {
-      return sortableProduct.filter((e) => e.category === selectedSort);
+      return sortableProduct.filter(e => e.category === selectedSort);
     } else {
-      return sortableProduct.filter((e) => e.occasion.find((k) => k === selectedSort));
+      return sortableProduct.filter(e => e.occasion.find(k => k === selectedSort));
     }
   }, [product, selectedSort]);
 

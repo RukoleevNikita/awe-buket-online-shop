@@ -1,20 +1,17 @@
-// import React from 'react';
-
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-
-import logo from '../../assets/images/logo.png';
-
-import { Container } from '../Container/Container';
-import { Button } from '../UI/Button/Button';
-
-import { Icon } from '../UI/Icon/Icon';
-
+'use client';
+import Link from 'next/link';
+import Image from 'next/image';
+import logo from '@/public/images/logo.png';
 import styles from './Header.module.scss';
 import { Navigation } from './Navigation/Navigation';
+import { useStore } from '@/store';
+import { shallow } from 'zustand/shallow';
+import { Button, Container, Icon } from '@/components';
 
 export const Header = () => {
-  const { totalPrice, totalCount } = useSelector((state) => state.cart);
+  const [ cart ] = useStore(state => [
+    state.cart
+  ], shallow);
 
   return (
     <header className={styles.header}>
@@ -25,22 +22,22 @@ export const Header = () => {
               <span>Написать нам:</span>
               <ul>
                 <li>
-                  <Link to="#" rel="noopener noreferrer nofollow" target="_blank">
+                  <Link href="#" rel="noopener noreferrer nofollow" target="_blank">
                     <Icon id="vk" color="#56392F" />
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" rel="noopener noreferrer nofollow" target="_blank">
+                  <Link href="#" rel="noopener noreferrer nofollow" target="_blank">
                     <Icon id="tg" color="#56392F" />
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" rel="noopener noreferrer nofollow" target="_blank">
+                  <Link href="#" rel="noopener noreferrer nofollow" target="_blank">
                     <Icon id="whatsapp" color="#56392F" />
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" rel="noopener noreferrer nofollow" target="_blank">
+                  <Link href="#" rel="noopener noreferrer nofollow" target="_blank">
                     <Icon id="viber" color="#56392F" />
                   </Link>
                 </li>
@@ -80,7 +77,7 @@ export const Header = () => {
                 <Link to="#" rel="noopener noreferrer nofollow" target="_blank">
                   <Icon id="whatsapp" color="#56392F" />
                 </Link>
-              </li>   
+              </li>
               <li>
                 <Link to="#" rel="noopener noreferrer nofollow" target="_blank">
                   <Icon id="viber" color="#56392F" />
@@ -100,7 +97,7 @@ export const Header = () => {
                 <a href="tel:8 (962) 055-57-45">8 (962) 055-57-45</a>
                 <span data-target="callback">Вам перезвонить?</span>
               </li>
-								
+
             </ul>
           </div>
         </div> */}
@@ -108,23 +105,25 @@ export const Header = () => {
       <div className={styles.header__middle}>
         <Container>
           <div className={styles.header__middle_wrapper}>
-            <Link to="/">
-              <img src={logo} className={styles.header__middle_logo} alt="logo" />
+            <Link href="/">
+              <Image src={logo} className={styles.header__middle_logo} alt="logo" />
               Awebuket | Съедобные букеты | Клубника Омск
             </Link>
 
-            <Link to="/cart">
-              <Button className={styles.header__middle_basket}>
-                {totalPrice} ₽<span className={styles.header__middle_line}></span>
+            <Link href="/cart">
+              <Button className={styles.header__middle_basket} >
+                {cart.totalPrice} ₽<span className={styles.header__middle_line}></span>
                 <Icon id="cart" />
-                {totalCount}
+                {cart.totalCount}
               </Button>
             </Link>
           </div>
         </Container>
       </div>
       <Icon id="footerLineDown" />
-      {/* <Navigation offsetY={offsetY} scrollY={scrollY} /> */}
+      <Navigation />
     </header>
   );
 };
+
+

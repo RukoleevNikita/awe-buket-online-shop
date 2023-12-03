@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useState } from 'react';
 
 function useOnScreen(ref, rootMargin = '0px') {
