@@ -1,5 +1,6 @@
 'use client';
-import { usePathname, useSearchParams, useRouter, redirect, RedirectType, permanentRedirect, useParams} from 'next/navigation';
+import { usePathname, useSearchParams, useRouter, redirect, RedirectType, permanentRedirect, useParams } from 'next/navigation';
+
 // import { motion, useTransform } from 'framer-motion';
 import { useState } from 'react';
 // import { useSelector } from 'react-redux';
@@ -19,10 +20,41 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 import { Categories, Container, Icon } from '@/components';
 import Link from 'next/link';
-import { Subcategories } from '@/components/Subcategories/Subcategories';
 
 export function Navigation() {
   const pathname = usePathname();
+  const links = [
+    {
+      id: 1,
+      href: '/corporative-clients',
+      name: 'Корпоративным клиентам'
+    },
+    {
+      id: 2,
+      href: '/delivery',
+      name: 'Доставка и оплата'
+    },
+    {
+      id: 3,
+      href: '#',
+      name: 'Повод'
+    },
+    {
+      id: 4,
+      href: '/about-us',
+      name: 'О нас'
+    },
+    {
+      id: 5,
+      href: '/contacts',
+      name: 'Контакты'
+    },
+    {
+      id: 6,
+      href: '/questions',
+      name: 'Вопросы и ответы'
+    }
+  ];
   // переписать css
   // const [hoverLink, isHoveringLink] = useHover();
   // const [hoverOfferBlock, isHoveringOfferBlock] = useHover();
@@ -40,6 +72,15 @@ export function Navigation() {
   // const navigate = useNavigate();
   // const location = useLocation();
   //
+  console.log(pathname);
+  const eventHandlerCategories = (id, category) => {
+    setCategory(category);
+    // test.push('http://localhost:3001/collection', {scroll: true});
+    // console.log(category);
+
+    // console.log(category);
+    // navigate('/collection', { state: { id, category } });
+  };
   // const eventHandlerSubcategories = (id, subcategories) => {
   //   setCategory(subcategories);
   //   navigate('/occasion', { state: { id, occasion: subcategories } });
@@ -51,133 +92,27 @@ export function Navigation() {
       <nav className={styles.navigation}>
         <Container>
           <ul className={styles.navigation__list}>
-            <li className={styles.navigation__list_item} style={{ position: 'relative' }}>
-              {/*<Link style={{ cursor: 'default' }} href="#" className={setActive}>*/}
-              <Link style={{ cursor: 'default' }} href="#">
+            <li>
+              <Link href="#">
                 <Icon id="squares" />
                 <span>Каталог</span>
               </Link>
-              <div className={pathname.split('/').includes('collection') ? styles.hideDropdownCategoriesList : styles.dropdownCategoriesList}>
+              <div className={pathname === '/collection' ? styles.hideDropdownCategoriesList : styles.dropdownCategoriesList}>
                 <Categories params={''} />
               </div>
             </li>
 
-            <li className={styles.navigation__list_item}>
-              {/*<Link href="/corporative-clients" className={setActive}>*/}
-              <Link href="/corporative-clients">
-                Корпоративным клиентам
-              </Link>
-            </li>
-            <li className={styles.navigation__list_item}>
-              {/*<Link href="/delivery" className={setActive}>*/}
-              <Link href="/delivery">
-                Доставка и оплата
-              </Link>
-            </li>
-            <li className={styles.navigation__list_item} style={{ position: 'relative' }}>
-              <Link style={{ cursor: 'default' }} href="#">
-                <span>Повод</span>
-              </Link>
-              {/*<div className={pathname === '/collection' ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>*/}
-              <div className={pathname.split('/').includes('occasion') ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>
-                <Subcategories params={''} />
-              </div>
-            </li>
-            {/* <li style={{ position: 'relative', padding: '15px 0' }}>
-              <CustomLink to="#" className={setActive}>
-                О нас
-              </CustomLink>
-              <ul className={styles.dropdownAboutUsList}>
-                <li>
-                  <CustomLink to="/certificates" className={setActive}>
-                    Сертификаты
-                  </CustomLink>
-                </li>
-                <li>
-                  <CustomLink to="#" className={setActive}>
-                    Обучение
-                  </CustomLink>
-                </li>
-              </ul>
-            </li> */}
-            <li className={styles.navigation__list_item} style={{ position: 'relative', padding: '15px 0' }}>
-              {/*<Link href="/about-us" className={setActive}>*/}
-              <Link href="/about-us">
-                О нас
-              </Link>
-            </li>
-            <li className={styles.navigation__list_item}>
-              {/*<Link href="/contacts" className={setActive}>*/}
-              <Link href="/contacts">
-                Контакты
-              </Link>
-            </li>
-            <li className={styles.navigation__list_item}>
-              {/*<Link href="/questions" className={setActive}>*/}
-              <Link href="/questions">
-                Вопросы и ответы
-              </Link>
-            </li>
+            {links.map(link => (
+              <li
+                key={link.id}
+                className={link.href == pathname ? styles.navigation__li + ' ' + styles.navigation__li_active : styles.navigation__li}
+              >
+                <Link href={link.href}>{link.name}</Link>
+              </li>
+            ))}
           </ul>
         </Container>
       </nav>
-
-      {/*<nav className={styles.customNavigation} style={{ opacity: scroll ? '1' : '0' }}>*/}
-      {/*  <Container>*/}
-      {/*    <div className={styles.customNavigation__wrapper}>*/}
-      {/*      <ul className={styles.customNavigation__list}>*/}
-      {/*        <li>*/}
-      {/*          <Link to="/">*/}
-      {/*            <img src={logo} className={styles.navigation__logo} alt="logo" />*/}
-      {/*          </Link>*/}
-      {/*        </li>*/}
-      {/*        <li ref={hoverOfferBlock}>*/}
-      {/*          <CustomLink to="/collection" className={setActive}>*/}
-      {/*            <Icon id="squares" />*/}
-      {/*            <span>Каталог</span>*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/corporative-clients" className={setActive}>*/}
-      {/*            Корпоративным клиентам*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/delivery" className={setActive}>*/}
-      {/*            Доставка и оплата*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/occasion" className={setActive}>*/}
-      {/*            Повод*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/about-us" className={setActive}>*/}
-      {/*            О нас*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/contacts" className={setActive}>*/}
-      {/*            Контакты*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/questions" className={setActive}>*/}
-      {/*            Вопросы и ответы*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <Link to="/cart">*/}
-      {/*            <Icon id="cartRed" />*/}
-      {/*            {totalPrice} ₽*/}
-      {/*          </Link>*/}
-      {/*        </li>*/}
-      {/*      </ul>*/}
-      {/*    </div>*/}
-      {/*  </Container>*/}
-      {/*</nav>*/}
     </>
   );
 }
-
