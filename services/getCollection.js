@@ -2,6 +2,7 @@ export default async category => {
   try {
     console.log(category);
     const res = await fetch(`http://localhost:3000/api/collection/${category[1]}`);
+    // const res = await fetch(`http://localhost:3000/api/collection/${category[1]}`);
     return res.json();
   } catch (e) {
     console.log(e);

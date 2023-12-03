@@ -1,18 +1,36 @@
 import { getProduct, getCollection } from '@/services/index';
 import { create } from 'zustand';
 
+const BASE_URL = 'http://localhost:3000/api';
 export const useStore = create()(set => ({
   product: [],
-  collectionProduct: [],
+  productCollection: [],
   loading: false,
-  getCollectionProducts: async () => {
+  getProductCollection: async (key, category) => {
     set({ loading: true });
-    const posts = await getCollection();
-    set({ posts, loading: false });
+    let productCollection = [];
+    let req;
+    switch (key) {
+    case 'collection':
+      req = await fetch(`${BASE_URL}/${key}/${category}`);
+      productCollection = await req.json();
+      break;
+    case 'occasion':
+      req = await fetch(`${BASE_URL}/${key}/${category}`);
+      productCollection = await req.json();
+      break;
+    default: null;
+    }
+    set({ productCollection, loading: false });
   },
-  getProduct: async search => {
+  getProduct: async path => {
+    let product = [];
+    let req;
     set({ loading: true });
-    const posts = await getProduct(search);
-    set({ posts, loading: false });
+    req = await fetch(`${BASE_URL}/${path}`);
+    product = await req.json();
+    set({ product, loading: false });
+    return product;
   }
 }));
+

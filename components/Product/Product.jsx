@@ -18,7 +18,7 @@ import { getProduct } from '@/services';
 import { Container } from '@/components';
 import { Slider } from '@/components/Slider/Slider';
 export function Product() {
-// export const Product = ({product}) => {
+// export const Page = ({product}) => {
 //   const { data, isLoading } = useSWR(`/api/products/${id}`, getProduct);
 //   console.log('data ', data);
   // const dispatch = useDispatch();

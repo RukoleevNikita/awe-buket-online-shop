@@ -4,9 +4,22 @@ import useSWR from 'swr';
 import { getProductsOccasion } from '@/services';
 import { Container, ProductCollection } from '@/components';
 import { Subcategories } from '@/components/Subcategories/Subcategories';
+import { useStore } from '@/store';
+import { shallow } from 'zustand/shallow';
+import { useEffect } from 'react';
 
 export default function Occasion({params}) {
-  const { data, isLoading } = useSWR(['occasion', params.category], getProductsOccasion);
+  const [ productCollection, getProductCollection, loading ] = useStore(state => [
+    state.productCollection,
+    state.getProductCollection,
+    state.loading
+  ], shallow);
+  const category = decodeURIComponent(params.category);
+
+  useEffect(() => {
+    getProductCollection('occasion', category);
+  }, [getProductCollection, category]);
+
   return (
     <Container>
       <div className={styles.wrapper}>
@@ -15,7 +28,7 @@ export default function Occasion({params}) {
             <Subcategories selectCategory={decodeURIComponent(params.category)} />
           </nav>
         </div>
-        <ProductCollection data={data ? data : []} />
+        {loading || <ProductCollection data={productCollection.length ? productCollection : []} />}
       </div>
     </Container>
   );

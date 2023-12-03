@@ -1,20 +1,32 @@
 'use client';
 
 import { Categories, Container, ProductCollection } from '@/components';
-import { getCollection } from '@/services';
 import useSWR from 'swr';
 import styles from './Collection.module.scss';
+import { useEffect } from 'react';
+import { useStore } from '@/store';
+import { shallow } from 'zustand/shallow';
 export default function Collection({params}) {
-  const { data, isLoading } = useSWR(['collection', params.category], getCollection);
+  const [ productCollection, getProductCollection, loading ] = useStore(state => [
+    state.productCollection,
+    state.getProductCollection,
+    state.loading
+  ], shallow);
+  const category = decodeURIComponent(params.category);
+
+  useEffect(() => {
+    getProductCollection('collection', category);
+  }, [getProductCollection, category]);
+
   return (
     <Container>
       <div className={styles.wrapper}>
         <div className={styles.category}>
           <nav>
-            <Categories selectCategory={decodeURIComponent(params.category)} />
+            <Categories selectCategory={category} />
           </nav>
         </div>
-        <ProductCollection data={data ? data : []} />
+        {loading || <ProductCollection data={productCollection.length ? productCollection : []} category={category} />}
       </div>
     </Container>
   );

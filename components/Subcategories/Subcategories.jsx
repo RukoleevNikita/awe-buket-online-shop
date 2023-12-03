@@ -38,7 +38,7 @@ export const Subcategories = ({ selectCategory }) => {
           {/*<div key={columnTitle}>*/}
           <h4>{`${columnTitle}: `}</h4>
           {columnData.map((el, id) => (
-            <Link key={id} href={{ pathname: `/occasion/${el}` }}>
+            <Link key={id} href={{ pathname: `/occasion/${el}` }} className={selectCategory === el && trigger ? styles.active : ''}>
               {el}
             </Link>
           ))}
