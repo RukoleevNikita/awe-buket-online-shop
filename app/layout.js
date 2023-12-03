@@ -1,6 +1,7 @@
 
 import './globals.scss';
-import {Footer, Header, MainWrapper} from '@/components';
+import {Footer, MainWrapper} from '@/components';
+import Header from '@/components/Header/Header';
 // import { StoreProvider } from '@/redux/StoreProvider';
 
 

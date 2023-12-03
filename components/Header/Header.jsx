@@ -8,7 +8,7 @@ import { useStore } from '@/store';
 import { shallow } from 'zustand/shallow';
 import { Button, Container, Icon } from '@/components';
 
-export const Header = () => {
+const Header = () => {
   const [ cart ] = useStore(state => [
     state.cart
   ], shallow);
@@ -126,4 +126,4 @@ export const Header = () => {
   );
 };
 
-
+export default Header;

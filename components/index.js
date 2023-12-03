@@ -1,4 +1,4 @@
-export * from './Header/Header';
+// export * from './Header/Header';
 export * from './Footer/Footer';
 export * from './ProductCard/ProductCard';
 export * from './ProductCollection/ProductCollection';
