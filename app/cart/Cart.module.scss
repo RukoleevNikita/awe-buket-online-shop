@@ -1,4 +1,4 @@
-h1 {
+ .orderForm > h1 {
     color: #56392F;
     text-align: center;
     padding: 10px 0;
@@ -66,7 +66,7 @@ h1 {
     padding: 2px 2px 2px 6px;
     cursor: pointer;
     margin-right: 10px;
-  
+
     .toggleSlider {
       width: 26px;
       height: 26px;
@@ -74,10 +74,10 @@ h1 {
       background-color: white;
       transition: transform 0.3s ease;
     }
-  
+
     &.active {
       background-color: #cf3128;
-  
+
       .toggleSlider {
         transform: translateX(30px);
       }

@@ -1,7 +1,5 @@
 'use client';
 import styles from './Occasion.module.scss';
-import useSWR from 'swr';
-import { getProductsOccasion } from '@/services';
 import { Container, ProductCollection } from '@/components';
 import { Subcategories } from '@/components/Subcategories/Subcategories';
 import { useStore } from '@/store';
