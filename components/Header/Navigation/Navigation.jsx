@@ -19,11 +19,10 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 import { Categories, Container, Icon } from '@/components';
 import Link from 'next/link';
+import { Subcategories } from '@/components/Subcategories/Subcategories';
 
 export function Navigation() {
   const pathname = usePathname();
-  const test = useRouter();
-  const test1 = useParams();
   // переписать css
   // const [hoverLink, isHoveringLink] = useHover();
   // const [hoverOfferBlock, isHoveringOfferBlock] = useHover();
@@ -41,15 +40,6 @@ export function Navigation() {
   // const navigate = useNavigate();
   // const location = useLocation();
   //
-  const eventHandlerCategories = (id, category) => {
-    setCategory(category);
-    // test.push('http://localhost:3001/collection', {scroll: true});
-    console.log(test1);
-    // console.log(category);
-
-    // console.log(category);
-    // navigate('/collection', { state: { id, category } });
-  };
   // const eventHandlerSubcategories = (id, subcategories) => {
   //   setCategory(subcategories);
   //   navigate('/occasion', { state: { id, occasion: subcategories } });
@@ -61,39 +51,37 @@ export function Navigation() {
       <nav className={styles.navigation}>
         <Container>
           <ul className={styles.navigation__list}>
-            <li style={{ position: 'relative' }}>
+            <li className={styles.navigation__list_item} style={{ position: 'relative' }}>
               {/*<Link style={{ cursor: 'default' }} href="#" className={setActive}>*/}
               <Link style={{ cursor: 'default' }} href="#">
                 <Icon id="squares" />
                 <span>Каталог</span>
               </Link>
-              {/*<div className={pathname === '/collection' ? styles.hideDropdownCategoriesList : styles.dropdownCategoriesList}>*/}
-              <div className={pathname === '/collection' ? styles.hideDropdownCategoriesList : styles.dropdownCategoriesList}>
-                {/*<Categories activeIndex={activeIndex} eventHandler={eventHandlerCategories} />*/}
+              <div className={pathname.split('/').includes('collection') ? styles.hideDropdownCategoriesList : styles.dropdownCategoriesList}>
                 <Categories params={''} />
               </div>
             </li>
 
-            <li>
+            <li className={styles.navigation__list_item}>
               {/*<Link href="/corporative-clients" className={setActive}>*/}
               <Link href="/corporative-clients">
                 Корпоративным клиентам
               </Link>
             </li>
-            <li>
+            <li className={styles.navigation__list_item}>
               {/*<Link href="/delivery" className={setActive}>*/}
               <Link href="/delivery">
                 Доставка и оплата
               </Link>
             </li>
-            <li style={{ position: 'relative' }}>
-              {/*<Link style={{ cursor: 'default' }} href="#" className={setActive}>*/}
+            <li className={styles.navigation__list_item} style={{ position: 'relative' }}>
               <Link style={{ cursor: 'default' }} href="#">
                 <span>Повод</span>
               </Link>
-              {/*<div className={location.pathname === '/occasion' ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>*/}
-              {/*<Subcategories activeCategory={category} eventHandler={eventHandlerSubcategories} />*/}
-              {/*</div>*/}
+              {/*<div className={pathname === '/collection' ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>*/}
+              <div className={pathname.split('/').includes('occasion') ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>
+                <Subcategories params={''} />
+              </div>
             </li>
             {/* <li style={{ position: 'relative', padding: '15px 0' }}>
               <CustomLink to="#" className={setActive}>
@@ -112,19 +100,19 @@ export function Navigation() {
                 </li>
               </ul>
             </li> */}
-            <li style={{ position: 'relative', padding: '15px 0' }}>
+            <li className={styles.navigation__list_item} style={{ position: 'relative', padding: '15px 0' }}>
               {/*<Link href="/about-us" className={setActive}>*/}
               <Link href="/about-us">
                 О нас
               </Link>
             </li>
-            <li>
+            <li className={styles.navigation__list_item}>
               {/*<Link href="/contacts" className={setActive}>*/}
               <Link href="/contacts">
                 Контакты
               </Link>
             </li>
-            <li>
+            <li className={styles.navigation__list_item}>
               {/*<Link href="/questions" className={setActive}>*/}
               <Link href="/questions">
                 Вопросы и ответы

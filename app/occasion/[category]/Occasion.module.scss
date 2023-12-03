@@ -1,0 +1,25 @@
+.ocation {
+    padding-right: 20px;
+}
+
+.wrapper {
+    display: flex;
+    // min-height: 100vh;
+    margin-bottom: 60px;
+    // костыль, что бы спрятать меню на странице коллекции
+    z-index: 5;
+    position: relative;
+
+}
+
+.title {
+    color: aqua;
+    text-align: center;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+    width: 100%;
+}

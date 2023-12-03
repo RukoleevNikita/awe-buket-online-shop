@@ -1,23 +1,19 @@
-// import React from 'react';
-
-// import { useSelector } from 'react-redux';
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-
 import logo from '@/public/images/logo.png';
-
-import { Container } from '../index';
-// import { Button } from '../UI/index';
-
-import { Icon } from '../UI/index';
-
 import styles from './Header.module.scss';
 import { Navigation } from './Navigation/Navigation';
+import { useStore } from '@/store';
+import { shallow } from 'zustand/shallow';
+import { Button, Container, Icon } from '@/components';
 
-export const Header = () => 
-// const { totalPrice, totalCount } = useSelector((state) => state.cart);
+export const Header = () => {
+  const [ cart ] = useStore(state => [
+    state.cart
+  ], shallow);
 
-  (
+  return (
     <header className={styles.header}>
       <div className={styles.header__top}>
         <Container>
@@ -114,18 +110,20 @@ export const Header = () =>
               Awebuket | Съедобные букеты | Клубника Омск
             </Link>
 
-            {/*<Link href="/cart">*/}
-            {/*  <Button className={styles.header__middle_basket}>*/}
-            {/*    {totalPrice} ₽<span className={styles.header__middle_line}></span>*/}
-            {/*    <Icon id="cart" />*/}
-            {/*    {totalCount}*/}
-            {/*  </Button>*/}
-            {/*</Link>*/}
+            <Link href="/cart">
+              <Button className={styles.header__middle_basket} >
+                {cart.totalPrice} ₽<span className={styles.header__middle_line}></span>
+                <Icon id="cart" />
+                {cart.totalCount}
+              </Button>
+            </Link>
           </div>
         </Container>
       </div>
       <Icon id="footerLineDown" />
       <Navigation />
     </header>
-  )
-;
+  );
+};
+
+

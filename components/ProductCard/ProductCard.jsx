@@ -11,7 +11,7 @@ import styles from './ProductCard.module.scss';
 
 // ленивая загрузка
 
-export const ProductCard = ({ _id, description, previewLinks, name, price, viewsCount, onLoad = () => {} }) => {
+export const ProductCard = ({ _id, description, previewLinks, name, price, category, viewsCount, onLoad = () => {} }) => {
   const [hoverBackgroundImage, isHoveringBackgroundImage] = useHover();
   const [hoverCardBlock, isHoveringCardBlock] = useHover();
 
@@ -37,7 +37,7 @@ export const ProductCard = ({ _id, description, previewLinks, name, price, views
       {(isVisible || isLoaded) && (
         <div className={styles.product__card_wrapper} ref={hoverCardBlock}>
           {/*<Link ref={hoverBackgroundImage} href={`/product/${_id}`}>*/}
-          <Link href={`collection/${_id}`}>
+          <Link href={`/collection/${category}/${_id}`}>
             <div
               ref={imageRef}
               style={{

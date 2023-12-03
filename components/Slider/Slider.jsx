@@ -1,15 +1,16 @@
+'use client';
 import React from 'react';
 
 import styles from './Slider.module.scss';
 
 // ленивая загрузка
 
-export const Slider = (props) => {
+export const Slider = props => {
   const arrLink = Object.values(props);
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [imageLinks, setImageLinks] = React.useState(arrLink[0]);
 
-  const handlerBtn = (index) => {
+  const handlerBtn = index => {
     setImageLinks(arrLink[index]);
     setActiveIndex(index);
   };

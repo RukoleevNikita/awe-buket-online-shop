@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import styles from './Subcategories.module.scss';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-export const Subcategories = ({ eventHandler, activeCategory }) => {
+export const Subcategories = ({ selectCategory }) => {
   const SUBCATEGORIES = [
     {
       Кому: ['Маме', 'Любимой', 'Мужчине', 'Коллеге'],
@@ -23,17 +24,23 @@ export const Subcategories = ({ eventHandler, activeCategory }) => {
       ],
     },
   ];
+
   const [columns, setColumns] = useState([]);
+
+  const pathname = usePathname();
+  const trigger = pathname.split('/').includes('occasion');
   useEffect(() => {
-    const columnsData = SUBCATEGORIES.map((category) => {
+    const columnsData = SUBCATEGORIES.map(category => {
       const [columnTitle, columnData] = Object.entries(category)[0];
+
       return (
         <div key={columnTitle}>
+          {/*<div key={columnTitle}>*/}
           <h4>{`${columnTitle}: `}</h4>
           {columnData.map((el, id) => (
-            <div key={id} onClick={() => eventHandler(id, el)}>
+            <Link key={id} href={{ pathname: `/occasion/${el}` }} className={selectCategory === el && trigger ? styles.active : ''}>
               {el}
-            </div>
+            </Link>
           ))}
         </div>
       );
@@ -41,5 +48,5 @@ export const Subcategories = ({ eventHandler, activeCategory }) => {
     setColumns(columnsData);
   }, []);
 
-  return <>{columns}</>;
+  return <nav className={trigger ? styles.subcategories__navigation : styles.subcategories__dropdownList}>{columns}</nav>;
 };

@@ -1,23 +1,25 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Container, MainWrapper, CartItem, CartFormPickup, Button, CartFormDelivery } from '../../components';
+'use client';
 
 import styles from './Cart.module.scss';
+import { Container, MainWrapper } from '@/components';
+import { useStore } from '@/store';
+import { shallow } from 'zustand/shallow';
+import { CartFormDelivery, CartFormPickup, CartItem } from '@/components/Cart';
+import { useState } from 'react';
 
-export const Cart = () => {
-  const { items, totalPrice, totalCount } = useSelector((state) => state.cart);
-  // id: data._id,
-  // name: data.name,
-  // price: Number(data.price),
-  // previewUrl: data.previewUrl
+
+export default function Cart () {
+  const [ cart, minusItem ] = useStore(state => [
+    state.cart,
+    state.minusItem
+  ], shallow);
   const [isChecked, setIsChecked] = useState(false);
 
   const toggleHandler = () => setIsChecked(!isChecked);
-
   return (
     <Container>
       <MainWrapper>
-        {items.length ? (
+        {cart.items.length ? (
           <>
             <div className={styles.wrapper}>
               <div className={styles.orderForm}>
@@ -26,22 +28,23 @@ export const Cart = () => {
                   <div className={`${styles.customToggle} ${isChecked ? styles.active : ''}`} onClick={toggleHandler}>
                     <div className={styles.toggleSlider}></div>
                   </div>
-                  {/* {isChecked ? <p>Доставка</p> : <p>Самовывоз</p>} */}
                   {<p>доставка/самовывоз</p>}
+                  {/*{isChecked ? <p>Доставка</p> : <p>Самовывоз</p>}*/}
                 </div>
+
                 <div>{isChecked ? <CartFormDelivery /> : <CartFormPickup />}</div>
-                {/* {isChecked ? <CartFormDelivery /> : <CartFormPickup />} */}
+                {/*{isChecked ? <CartFormDelivery /> : <CartFormPickup />}*/}
               </div>
               <div className={styles.order}>
                 <div>
                   <h1>Ваш заказ</h1>
-                  {items.map((item) => (
+                  {cart.items.map(item => (
                     <CartItem {...item} key={item.id} />
                   ))}
                 </div>
                 <div className={styles.order__price}>
                   <div>
-                    Итого: <span>{totalPrice} ₽</span>
+                    Итого: <span>{cart.totalPrice} ₽</span>
                   </div>
                 </div>
               </div>
