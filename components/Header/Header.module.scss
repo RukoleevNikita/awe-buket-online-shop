@@ -1,36 +1,63 @@
+@import '../../styles/variables';
+@import '../../styles/functions';
+@import '../../styles/mixins';
+
 .header {
   position: relative;
+  @include mq(md) {
+    margin-bottom: rem(30);
+  }
   & > svg {
     position: absolute;
     z-index: -1;
-    top: -8px;
+    top: rem(-8);
+
+    @include mq(md) {
+      display: none;
+    }
   }
   &__top {
     background-color: #fff;
-    // padding: 10px;
+    // padding: rem(10);
     width: 100%;
 
+    @include mq(md) {
+      margin-top: 83px;
+      border-bottom: 2px solid #2b2a29;
+      padding: rem(10) 0;
+    }
+
     &_wrapper {
-      // max-width: 1220px;
+      // max-width: rem(1220);
       // margin: 0 auto;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+
+      @include mq(md) {
+        flex-direction: column;
+        align-items: center;
+      }
     }
     &_socialNetworks {
       display: flex;
       align-items: center;
 
       span {
-        padding-right: 10px;
-        font-size: 16px;
+        padding-right: rem(10);
+        font-size: rem(16);
         color: #56392f;
+
+        @include mq(md) {
+          display: none;
+        }
       }
       ul {
         display: flex;
         align-items: center;
         list-style: none;
         li {
-          padding-right: 15px;
+          padding-right: rem(15);
         }
         li:last-child {
           padding-right: 0;
@@ -40,34 +67,48 @@
     &_contact {
       display: flex;
       align-items: center;
+      @include mq(md) {
+        width: 100%;
+      }
+
       ul {
         display: flex;
+
+        @include mq(md) {
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
         li {
           display: flex;
           align-items: center;
           a {
             span {
-              font-size: 16px;
+              font-size: rem(16);
               color: #56392f;
             }
           }
 
           span {
-            padding-left: 15px;
+            padding-left: rem(15);
           }
           span:last-child {
-            font-size: 14px;
+            font-size: rem(14);
           }
         }
         li:last-child {
           a {
             font-weight: bold;
-            font-size: 20px;
+            font-size: rem(20);
             color: #56392f;
           }
         }
         li:first-child {
-          padding-right: 60px;
+          padding-right: rem(60);
+          
+          @include mq(md) {
+            padding-right: 0;
+          }
           a {
             display: flex;
           }
@@ -75,49 +116,81 @@
       }
     }
   }
+  &__logo {
+    &Image {
+      height: rem(90);
+      width: rem(90);
+    }
+    &Text {
+      @include mq(md){
+        display: none;
+      }
+    }
+  }
+
+  &__basket {
+    border-radius: rem(10);
+    background-color: #cf3128;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: rem(14);
+    z-index: 1;
+    
+    @include mq(md) {
+      position: fixed;
+      right: rem(15);
+      bottom: rem(15);
+    }
+
+    &Btn {
+      padding: rem(10);
+      background-color: transparent;
+      color: #fff;
+      display: inline-block;
+    }
+
+    &Line {
+      display: inline-block;
+      width: 1px;
+      height: rem(25);
+      background-color: rgba(255, 255, 255, 0.25);
+      margin-left: rem(14);
+      margin-right: rem(14);
+    }
+
+    svg {
+      margin-right: rem(5);
+    }
+  }
   &__middle {
     background-color: #2b2a29;
-    padding: 10px;
+    padding: rem(10);
+
+    @include mq(md) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 11;
+    }
     // width: 100%;
     a:first-child {
       color: white;
       display: flex;
       align-items: center;
       img {
-        margin-right: 12px;
+        margin-right: rem(12);
       }
     }
     &_wrapper {
-      // max-width: 1220px;
+      // max-width: rem(1220);
       // margin: 0 auto;
-      // padding-right: 20px;
+      // padding-right: rem(20);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      // padding-right: 20px;
-    }
-    &_logo {
-      height: 90px;
-      width: 90px;
-    }
-    &_basket {
-      background-color: #cf3128;
-      border-radius: 10px;
-      color: white;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-    &_line {
-      width: 1px;
-      height: 25px;
-      background-color: rgba(255, 255, 255, 0.25);
-      margin-left: 14px;
-      margin-right: 14px;
-    }
-    svg {
-      margin-right: 5px;
+      // padding-right: rem(20);
     }
   }
 }

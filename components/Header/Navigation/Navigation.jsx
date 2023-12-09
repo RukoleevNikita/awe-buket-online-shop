@@ -1,6 +1,5 @@
 'use client';
 import { usePathname, useSearchParams, useRouter, redirect, RedirectType, permanentRedirect, useParams } from 'next/navigation';
-
 // import { motion, useTransform } from 'framer-motion';
 import { useState } from 'react';
 // import { useSelector } from 'react-redux';
@@ -20,99 +19,135 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 import { Categories, Container, Icon } from '@/components';
 import Link from 'next/link';
+import { Subcategories } from '@/components/Subcategories/Subcategories';
 
-export function Navigation() {
+export function Navigation({isActive, disabledMenu}) {
+  const classes = [styles.navigation];
   const pathname = usePathname();
-  const links = [
-    {
-      id: 1,
-      href: '/corporative-clients',
-      name: 'Корпоративным клиентам'
-    },
-    {
-      id: 2,
-      href: '/delivery',
-      name: 'Доставка и оплата'
-    },
-    {
-      id: 3,
-      href: '#',
-      name: 'Повод'
-    },
-    {
-      id: 4,
-      href: '/about-us',
-      name: 'О нас'
-    },
-    {
-      id: 5,
-      href: '/contacts',
-      name: 'Контакты'
-    },
-    {
-      id: 6,
-      href: '/questions',
-      name: 'Вопросы и ответы'
-    }
-  ];
-  // переписать css
-  // const [hoverLink, isHoveringLink] = useHover();
-  // const [hoverOfferBlock, isHoveringOfferBlock] = useHover();
-  // const [test, isTest] = useHover();
-  // const [hoverPageBlock, isHoverPageBlock] = useHover();
-  const [activeIndex, setActiveIndex] = useState();
-  const [category, setCategory] = useState();
-  // const scrollPosition = useScrollPosition();
-  //
-  // // const { sortedProduct, setIsSort } = useSort(products.items || []);
-  // const { totalPrice } = useSelector(state => state.cart);
-  // const setActive = ({ isActive }) => (isActive ? `${styles.activeLink}` : '');
-  // const scroll = scrollPosition > 175;
-  //
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  //
-  console.log(pathname);
-  const eventHandlerCategories = (id, category) => {
-    setCategory(category);
-    // test.push('http://localhost:3001/collection', {scroll: true});
-    // console.log(category);
+  const [click, setClick] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
 
-    // console.log(category);
-    // navigate('/collection', { state: { id, category } });
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
+
+  const onMouseEnter = () => {
+    if (window.innerWidth < 768) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
   };
-  // const eventHandlerSubcategories = (id, subcategories) => {
-  //   setCategory(subcategories);
-  //   navigate('/occasion', { state: { id, occasion: subcategories } });
-  // };
-  // Переписать!!!!!!!!!!
+
+  const onMouseLeave = () => {
+    if (window.innerWidth < 768) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
+  };
+
+  if(isActive) {
+    classes.push(styles.active);
+  }
+
+
   return (
     <>
-      {/*<nav className={styles.navigation} style={{ opacity: scroll ? '0' : '1' }}>*/}
-      <nav className={styles.navigation}>
+      <nav className={classes.join(' ')}>
         <Container>
           <ul className={styles.navigation__list}>
-            <li>
-              <Link href="#">
+            <li className={styles.navigation__list_item} style={{ position: 'relative' }}>
+              <Link style={{ cursor: 'default' }} href="/collection/Наборы клубники в шоколаде" onClick={disabledMenu}>
                 <Icon id="squares" />
                 <span>Каталог</span>
               </Link>
-              <div className={pathname === '/collection' ? styles.hideDropdownCategoriesList : styles.dropdownCategoriesList}>
+              <div className={pathname.split('/').includes('collection') ? styles.hideDropdownCategoriesList : styles.dropdownCategoriesList}>
                 <Categories params={''} />
               </div>
             </li>
 
-            {links.map(link => (
-              <li
-                key={link.id}
-                className={link.href == pathname ? styles.navigation__li + ' ' + styles.navigation__li_active : styles.navigation__li}
-              >
-                <Link href={link.href}>{link.name}</Link>
-              </li>
-            ))}
+            <li className={styles.navigation__list_item}>
+              <Link href="/corporative-clients" onClick={disabledMenu}>Корпоративным клиентам</Link>
+            </li>
+            <li className={styles.navigation__list_item}>
+              <Link href="/delivery" onClick={disabledMenu}>Доставка и оплата</Link>
+            </li>
+            <li className={styles.navigation__list_item} style={{ position: 'relative' }}>
+              <Link style={{ cursor: 'default' }} href="/occasion/Маме" onClick={disabledMenu}>
+                <span>Повод</span>
+              </Link>
+              <div className={pathname.split('/').includes('occasion') ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>
+                <Subcategories params={''} />
+              </div>
+            </li>
+            <li className={styles.navigation__list_item} style={{ position: 'relative', padding: '15px 0' }}>
+              <Link href="/about-us" onClick={disabledMenu}>О нас</Link>
+            </li>
+            <li className={styles.navigation__list_item}>
+              <Link href="/contacts" onClick={disabledMenu}>Контакты</Link>
+            </li>
+            <li className={styles.navigation__list_item}>
+              <Link href="/questions" onClick={disabledMenu}>Вопросы и ответы</Link>
+            </li>
           </ul>
         </Container>
       </nav>
+
+      {/*<nav className={styles.customNavigation} style={{ opacity: scroll ? '1' : '0' }}>*/}
+      {/*  <Container>*/}
+      {/*    <div className={styles.customNavigation__wrapper}>*/}
+      {/*      <ul className={styles.customNavigation__list}>*/}
+      {/*        <li>*/}
+      {/*          <Link to="/">*/}
+      {/*            <img src={logo} className={styles.navigation__logo} alt="logo" />*/}
+      {/*          </Link>*/}
+      {/*        </li>*/}
+      {/*        <li ref={hoverOfferBlock}>*/}
+      {/*          <CustomLink to="/collection" className={setActive}>*/}
+      {/*            <Icon id="squares" />*/}
+      {/*            <span>Каталог</span>*/}
+      {/*          </CustomLink>*/}
+      {/*        </li>*/}
+      {/*        <li>*/}
+      {/*          <CustomLink to="/corporative-clients" className={setActive}>*/}
+      {/*            Корпоративным клиентам*/}
+      {/*          </CustomLink>*/}
+      {/*        </li>*/}
+      {/*        <li>*/}
+      {/*          <CustomLink to="/delivery" className={setActive}>*/}
+      {/*            Доставка и оплата*/}
+      {/*          </CustomLink>*/}
+      {/*        </li>*/}
+      {/*        <li>*/}
+      {/*          <CustomLink to="/occasion" className={setActive}>*/}
+      {/*            Повод*/}
+      {/*          </CustomLink>*/}
+      {/*        </li>*/}
+      {/*        <li>*/}
+      {/*          <CustomLink to="/about-us" className={setActive}>*/}
+      {/*            О нас*/}
+      {/*          </CustomLink>*/}
+      {/*        </li>*/}
+      {/*        <li>*/}
+      {/*          <CustomLink to="/contacts" className={setActive}>*/}
+      {/*            Контакты*/}
+      {/*          </CustomLink>*/}
+      {/*        </li>*/}
+      {/*        <li>*/}
+      {/*          <CustomLink to="/questions" className={setActive}>*/}
+      {/*            Вопросы и ответы*/}
+      {/*          </CustomLink>*/}
+      {/*        </li>*/}
+      {/*        <li>*/}
+      {/*          <Link to="/cart">*/}
+      {/*            <Icon id="cartRed" />*/}
+      {/*            {totalPrice} ₽*/}
+      {/*          </Link>*/}
+      {/*        </li>*/}
+      {/*      </ul>*/}
+      {/*    </div>*/}
+      {/*  </Container>*/}
+      {/*</nav>*/}
     </>
   );
 }
