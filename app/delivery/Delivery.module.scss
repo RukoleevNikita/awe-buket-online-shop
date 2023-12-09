@@ -8,39 +8,39 @@
     &_title {
         font-family: 'Circe';
         font-weight: 700;
-        font-size: 44px;
-        line-height: 52px;
+        font-size: rem(44);
+        line-height: rem(52);
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: rem(30);
     }
     &_description {
-        font-size: 20px;
+        font-size: rem(20);
 
         p {
-            margin-bottom: 15px;
+            margin-bottom: rem(15);
             &:last-child {
-                margin-bottom: 30px;
+                margin-bottom: rem(30);
             }
             & > span {
                 font-family: 'Circe';
                 font-weight: 700;
-                font-size: 16px;
+                font-size: rem(16);
             }
             &:before {
                 content: '';
                 display: inline-block;
-                width: 14px;
-                height: 14px;
-                border-radius: 4px;
-                margin-right: 10px;
-                background-color: rgb(50, 206, 50);
+                width: rem(14);
+                height: rem(14);
+                border-radius: rem(4);
+                margin-right: rem(10);
+                background-color: #32ce32;
                 // background-color: #cf3128;
             }
         }
     }
     div { // заглушка
         &:last-child {
-            margin-bottom: 50px;
+            margin-bottom: rem(50);
         }
     }
 }

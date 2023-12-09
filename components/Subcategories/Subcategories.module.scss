@@ -1,17 +1,21 @@
+@import '../../styles/variables';
+@import '../../styles/functions';
+@import '../../styles/mixins';
+
 .subcategories__navigation {
   a {
     position: relative;
     background: #FAF6F0;
-    border-radius: 10px;
-    width: 260px;
-    height: 50px;
+    border-radius: rem(10);
+    width: rem(260);
+    height: rem(50);
     display: flex;
     align-items: center;
     color: #56392F;
     font-weight: bold;
-    margin-top: 15px;
+    margin-top: rem(15);
     cursor: pointer;
-    padding: 0 10px;
+    padding: 0 rem(10);
     transition: 0.3s;
 
     &:hover {
@@ -22,30 +26,30 @@
 }
 
 .subcategories__dropdownList {
-  border-radius: 10px;
+  border-radius: rem(10);
   position: absolute;
-  top: 45px;
+  top: rem(45);
   display: flex;
   background: #fff;
   color: #cf3128;
-  width: 495px;
+  width: rem(495);
   left: 0;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  box-shadow: 0 0 rem(15) rgba(0, 0, 0, 0.1);
+  padding: rem(10);
   z-index: 10;
   a {
     display: flex;
     align-items: center;
     color: #56392F;
-    border-radius: 10px;
-    padding: 10px 20px;
+    border-radius: rem(10);
+    padding: rem(10) rem(20);
     cursor: pointer;
     justify-content: flex-start;
 
     &:hover {
       transition: 0.4s;
       color: white;
-      border-radius: 10px;
+      border-radius: rem(10);
       background-color: #56392F;
     }
   }

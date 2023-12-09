@@ -1,41 +1,45 @@
+@import '../styles/variables';
+@import '../styles/functions';
+@import '../styles/mixins';
+
 .main {
-  margin-bottom: 150px;
-  margin-top: 40px;
-  background-color: #FAF6F0;
+  margin-bottom: rem(150);
+  margin-top: rem(40);
+  background-color: #faf6f0;
   position: relative;
-  font-size: "Circe-Regular";
+  font-size: 'Circe-Regular';
 
   & > svg {
     position: absolute;
     z-index: -1;
 
     &:last-child {
-      bottom: -50px;
+      bottom: rem(-50);
     }
     &:first-child {
-      top: -60px;
+      top: rem(-60);
     }
   }
 
   &_title {
-    margin-bottom: 40px;
+    margin-bottom: rem(40);
 
     span {
       &:first-child {
-        font-family: "freehand_regularb";
+        font-family: 'freehand_regularb';
         display: block;
-        margin-bottom: 10px;
+        margin-bottom: rem(10);
         color: #cf3128;
         text-align: center;
         text-transform: uppercase;
-        font-size: 22px;
+        font-size: rem(22);
       }
       &:last-child {
-        font-family: "Circe";
+        font-family: 'Circe';
         font-weight: 700;
         display: block;
-        font-size: 29px;
-        color: #56392F;
+        font-size: rem(29);
+        color: #56392f;
         text-transform: uppercase;
       }
     }
@@ -43,8 +47,8 @@
 }
 
 .subtitle {
-  font-family: "freehand_regularb";
-  font-size: 40px;
+  font-family: 'freehand_regularb';
+  font-size: rem(40);
   color: #cf3128;
   text-align: center;
 }

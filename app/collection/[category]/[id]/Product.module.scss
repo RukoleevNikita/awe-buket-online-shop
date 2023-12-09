@@ -1,3 +1,7 @@
+@import '../../../styles/variables';
+@import '../../../styles/functions';
+@import '../../../styles/mixins';
+
 .product {
     position: relative;
     display: flex;
@@ -9,36 +13,36 @@
 
     &__information {
         width: 49%;
-        // padding-left: 5px;
+        // padding-left: rem(5);
         &_title {
-            font-size: 32px;
-            line-height: 28px;
+            font-size: rem(32);
+            line-height: rem(28);
             color: #56392F;
             font-weight: 600;
-            margin-bottom: 20px; 
+            margin-bottom: rem(20); 
         }
         &_description {
-            margin-bottom: 20px;
+            margin-bottom: rem(20);
             span {
                 font-weight: bold;
-                font-size: 14px;
+                font-size: rem(14);
                 color: #56392F;
             }
         }
 
         &_price {
-            font-size: 40px;
-            line-height: 52px;
+            font-size: rem(40);
+            line-height: rem(52);
             color: #56392F;
             font-weight: 700;
-            margin-right: 20px;
+            margin-right: rem(20);
         }
         &_control {
-            margin-top: 10px;
+            margin-top: rem(10);
             button {
-                border-radius: 10px;
+                border-radius: rem(10);
                 color: white;
-                padding: 10px;
+                padding: rem(10);
             }
         }
     }

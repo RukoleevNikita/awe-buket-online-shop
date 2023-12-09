@@ -1,8 +1,12 @@
+@import '../../styles/variables';
+@import '../../styles/functions';
+@import '../../styles/mixins';
+
 .map {
-    border-radius: 10px;
+    border-radius: rem(10);
     margin: 0 auto;
-    margin-bottom: 40px;
+    margin-bottom: rem(40);
     div {
-        border-radius: 10px;
+        border-radius: rem(10);
     }
 }

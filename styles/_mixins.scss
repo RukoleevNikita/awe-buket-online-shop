@@ -1,0 +1,27 @@
+@mixin font($f-name, $f-style, $f-weight, $f-url) {
+    @font-face {
+        font-family: $f-name;
+        font-style: $f-style;
+        font-weight: $f-weight;
+        src: url($f-url) format("woff2");
+    }
+}
+
+// media queries
+
+$media: (
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1440px,
+);
+
+@mixin mq($breakpoint) {
+    @each $breakpoints, $size in $media {
+        @if $breakpoint==$breakpoints {
+            @media screen and (max-width: $size) {
+                @content;
+            }
+        }
+    }
+}

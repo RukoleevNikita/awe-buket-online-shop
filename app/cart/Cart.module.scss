@@ -1,7 +1,11 @@
+@import '../../styles/variables';
+@import '../../styles/functions';
+@import '../../styles/mixins';
+
  .orderForm > h1 {
     color: #56392F;
     text-align: center;
-    padding: 10px 0;
+    padding: rem(10) 0;
 }
 .wrapper {
     display: flex;
@@ -9,15 +13,15 @@
 }
 .orderForm {
     width: 50%;
-    padding-right: 50px;
+    padding-right: rem(50);
     button {
         background: #cf3128;
-        border-radius: 10px;
-        font-size: 16px;
+        border-radius: rem(10);
+        font-size: rem(16);
         color: #FDF3E5;
-        width: 200px;
-        height: 52px;
-        margin: 17px 0;
+        width: rem(200);
+        height: rem(52);
+        margin: rem(17) 0;
         cursor: pointer;
         transition: 0.4s;
         &:hover {
@@ -28,19 +32,19 @@
 }
 .order {
     width: 50%;
-    padding-left: 50px;
+    padding-left: rem(50);
     &__price {
-        font-size: 40px;
-        line-height: 52px;
+        font-size: rem(40);
+        line-height: rem(52);
         color: #56392F;
         display: flex;
         align-items: baseline;
         justify-content: space-between;
-        margin-top: 30px;
+        margin-top: rem(30);
         border-top: 0;
         border-top: 1px solid #EB3E37;
-        margin-bottom: 15px;
-        padding-bottom: 20px;
+        margin-bottom: rem(15);
+        padding-bottom: rem(20);
         span {
             font-weight: bold;
         }
@@ -52,24 +56,24 @@
     align-items: center;
     p {
         color: #56392F;;
-        font-size: 16px;
+        font-size: rem(16);
     }
 }
 
 .customToggle {
-    width: 60px;
-    height: 30px;
+    width: rem(60);
+    height: rem(30);
     background-color: #ccc;
-    border-radius: 15px;
+    border-radius: rem(15);
     display: flex;
     align-items: center;
-    padding: 2px 2px 2px 6px;
+    padding: 2px 2px 2px rem(6);
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: rem(10);
 
     .toggleSlider {
-      width: 26px;
-      height: 26px;
+      width: rem(26);
+      height: rem(26);
       border-radius: 50%;
       background-color: white;
       transition: transform 0.3s ease;
@@ -79,7 +83,7 @@
       background-color: #cf3128;
 
       .toggleSlider {
-        transform: translateX(30px);
+        transform: translateX(rem(30));
       }
     }
   }

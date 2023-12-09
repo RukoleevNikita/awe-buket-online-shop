@@ -1,13 +1,17 @@
+@import '../../../styles/variables';
+@import '../../../styles/functions';
+@import '../../../styles/mixins';
+
 .inputContainer {
     display: flex;
     flex-direction: column;
     label {
         font-family: 'Circe';
         font-weight: 700;
-        font-size: 18px;
-        line-height: 18px;
+        font-size: rem(18);
+        line-height: rem(18);
         color: #56392F;
-        margin-bottom: 7px;
+        margin-bottom: rem(7);
         &:after {
             font-size: 0.9em;
             margin-left: 0.2em;
@@ -18,10 +22,10 @@
     }
     input {
         border: 1px solid #56392F;
-        border-radius: 10px;
-        padding: 0 10px;
-        height: 50px;
-        font-size: 14px;
+        border-radius: rem(10);
+        padding: 0 rem(10);
+        height: rem(50);
+        font-size: rem(14);
         color: #56392F;
     }
 }
