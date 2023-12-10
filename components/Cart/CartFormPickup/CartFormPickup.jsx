@@ -16,54 +16,54 @@ export const CartFormPickup = () => {
     recipientPhoneNumber: '', // Номер телефона (Получателя)
     recipientNameField: '', // ФИО (Получателя)
     dateField: '',
-    timeField: '',
+    timeField: ''
   });
   const formPickupDataHandler = (data, field) => {
     switch (field) {
-    case 'customerNameField':
-      setFormPickupData(prevData => ({
-        ...prevData,
-        customerNameField: data,
-      }));
-      break;
-    case 'customerPhoneNumberField':
-      setFormPickupData(prevData => ({
-        ...prevData,
-        customerPhoneNumberField: data,
-      }));
-      break;
-    case 'adressField':
-      setFormPickupData(prevData => ({
-        ...prevData,
-        adressField: data,
-      }));
-      break;
-    case 'recipientPhoneNumber':
-      setFormPickupData(prevData => ({
-        ...prevData,
-        recipientPhoneNumber: data,
-      }));
-      break;
-    case 'recipientNameField':
-      setFormPickupData(prevData => ({
-        ...prevData,
-        recipientNameField: data,
-      }));
-      break;
-    case 'dateField':
-      setFormPickupData(prevData => ({
-        ...prevData,
-        dateField: data,
-      }));
-      break;
-    case 'timeField':
-      setFormPickupData(prevData => ({
-        ...prevData,
-        timeField: data,
-      }));
-      break;
-    default:
-      return null;
+      case 'customerNameField':
+        setFormPickupData(prevData => ({
+          ...prevData,
+          customerNameField: data
+        }));
+        break;
+      case 'customerPhoneNumberField':
+        setFormPickupData(prevData => ({
+          ...prevData,
+          customerPhoneNumberField: data
+        }));
+        break;
+      case 'adressField':
+        setFormPickupData(prevData => ({
+          ...prevData,
+          adressField: data
+        }));
+        break;
+      case 'recipientPhoneNumber':
+        setFormPickupData(prevData => ({
+          ...prevData,
+          recipientPhoneNumber: data
+        }));
+        break;
+      case 'recipientNameField':
+        setFormPickupData(prevData => ({
+          ...prevData,
+          recipientNameField: data
+        }));
+        break;
+      case 'dateField':
+        setFormPickupData(prevData => ({
+          ...prevData,
+          dateField: data
+        }));
+        break;
+      case 'timeField':
+        setFormPickupData(prevData => ({
+          ...prevData,
+          timeField: data
+        }));
+        break;
+      default:
+        return null;
     }
   };
   // console.log('formPickupData ', formPickupData);
@@ -79,16 +79,13 @@ export const CartFormPickup = () => {
         name="customerNameField"
       />
       {/* переписать стили */}
-      <div className={styles.inputContainer}>
-        <label>Контактный телефон (Заказчика)</label>
-        <InputMask
-          alwaysShowMask={true}
-          name="customerPhoneNumberField"
-          mask="+7(999)999-99-99"
-          value={formPickupDataHandler.customerPhoneNumberField}
-          onChange={e => formPickupDataHandler(e.target.value, 'customerPhoneNumberField')}
-        />
-      </div>
+      <Input
+        label="Контактный телефон (Заказчика)"
+        name="customerPhoneNumberField"
+        mask="+7 (999) 999-99-99"
+        value={formPickupDataHandler.customerPhoneNumberField}
+        onChange={e => formPickupDataHandler(e.target.value, 'customerPhoneNumberField')}
+      />
       <Input
         label="Адрес доставки"
         type="text"
@@ -97,16 +94,14 @@ export const CartFormPickup = () => {
         name="adressField"
       />
       {/* переписать стили */}
-      <div className={styles.inputContainer}>
-        <label>Номер телефона (Получателя)</label>
-        <InputMask
-          alwaysShowMask={true}
-          name="recipientPhoneNumber"
-          mask="+7(999)999-99-99"
-          value={formPickupDataHandler.recipientPhoneNumber}
-          onChange={e => formPickupDataHandler(e.target.value, 'recipientPhoneNumber')}
-        />
-      </div>
+      <Input
+        label="Номер телефона (Получателя)"
+        alwaysShowMask={true}
+        name="recipientPhoneNumber"
+        mask="+7 (999) 999-99-99"
+        value={formPickupDataHandler.recipientPhoneNumber}
+        onChange={e => formPickupDataHandler(e.target.value, 'recipientPhoneNumber')}
+      />
       <Input
         label="ФИО (Получателя)"
         type="text"
@@ -114,22 +109,20 @@ export const CartFormPickup = () => {
         onChange={e => formPickupDataHandler(e.target.value, 'recipientNameField')}
         name="recipientNameField"
       />
-      <div className={styles.paramsPickup}>
-        <Input
-          label="Дата доставки"
-          type="date"
-          value={formPickupData.dateField}
-          onChange={e => formPickupDataHandler(e.target.value, 'dateField')}
-          name="dateField"
-        />
-        <Select
-          label="Время доставки"
-          options={options}
-          value={formPickupData.dateField}
-          onChange={e => formPickupDataHandler(e, 'timeField')}
-          name="timeField"
-        />
-      </div>
+      <Input
+        label="Дата доставки"
+        type="date"
+        value={formPickupData.dateField}
+        onChange={e => formPickupDataHandler(e.target.value, 'dateField')}
+        name="dateField"
+      />
+      <Select
+        label="Время доставки"
+        options={options}
+        value={formPickupData.dateField}
+        onChange={e => formPickupDataHandler(e, 'timeField')}
+        name="timeField"
+      />
       <Button>Оформить заказ</Button>
     </form>
   );

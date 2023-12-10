@@ -4,6 +4,11 @@
 
 .ocation {
     padding-right: rem(20);
+
+    @include mq(md) {
+        padding-right: 0;
+        width: 100%;
+    }
 }
 
 .wrapper {
@@ -14,6 +19,9 @@
     z-index: 5;
     position: relative;
 
+    @include mq(md) {
+        flex-wrap: wrap;
+    }
 }
 
 .title {

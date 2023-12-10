@@ -7,6 +7,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    @include mq(sm) {
+        flex-direction: column;
+    }
+
     &__name {
         font-size: rem(32);
         line-height: rem(28);
@@ -49,14 +54,25 @@
         color: #56392F;
         font-weight: 700;
         margin-right: rem(20);
+
+        @include mq(sm) {
+            margin-right: 0;
+        }
     }
     &__del {
         cursor: pointer;
+        order: 1;
     }
    img {
         height: rem(144);
         width: rem(144);
         border-radius: rem(30);
+
+        @include mq(sm) {
+            width: rem(300);
+            height: rem(300);
+            margin-bottom: rem(15);
+        }
    }
    
 }

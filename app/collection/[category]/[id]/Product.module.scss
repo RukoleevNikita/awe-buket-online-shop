@@ -1,19 +1,32 @@
-@import '../../../styles/variables';
-@import '../../../styles/functions';
-@import '../../../styles/mixins';
+@import '../../../../styles/variables';
+@import '../../../../styles/functions';
+@import '../../../../styles/mixins';
 
 .product {
     position: relative;
     display: flex;
     justify-content: space-between;
 
+    @include mq(md) {
+        flex-wrap: wrap;
+    }
+
     &__slider {
         width: 49%;
+
+        @include mq(md) {
+            width: 100%;
+        }
     }
 
     &__information {
         width: 49%;
         // padding-left: rem(5);
+
+        @include mq(md) {
+            width: 100%;
+        }
+
         &_title {
             font-size: rem(32);
             line-height: rem(28);

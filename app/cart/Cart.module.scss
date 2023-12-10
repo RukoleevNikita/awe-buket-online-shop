@@ -7,13 +7,27 @@
     text-align: center;
     padding: rem(10) 0;
 }
+
 .wrapper {
     display: flex;
     justify-content: space-around;
+    
+    @include mq(md) {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
 }
+
 .orderForm {
     width: 50%;
     padding-right: rem(50);
+    
+    @include mq(md) {
+        width: 100%;
+        margin-bottom: rem(30);
+        padding-right: 0;
+    }
+
     button {
         background: #cf3128;
         border-radius: rem(10);
@@ -33,6 +47,18 @@
 .order {
     width: 50%;
     padding-left: rem(50);
+    
+    @include mq(md) {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    h1 {
+        @include mq(sm) {
+            text-align: center;
+        }
+    }
+
     &__price {
         font-size: rem(40);
         line-height: rem(52);
@@ -54,6 +80,7 @@
 .toggleBlock {
     display: flex;
     align-items: center;
+    margin-bottom: rem(15);
     p {
         color: #56392F;;
         font-size: rem(16);
@@ -67,7 +94,7 @@
     border-radius: rem(15);
     display: flex;
     align-items: center;
-    padding: 2px 2px 2px rem(6);
+    border: 2px solid #ccc;
     cursor: pointer;
     margin-right: rem(10);
 

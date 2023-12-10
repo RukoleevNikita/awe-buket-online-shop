@@ -3,7 +3,12 @@
 @import '../../../styles/mixins';
 
 .category {
-  padding-right: rem(20);
+  width: rem(300);
+
+  @include mq(md) {
+    width: 100%;
+    margin-bottom: rem(30);
+  }
 }
 
 .wrapper {
@@ -13,5 +18,14 @@
   // костыль, что бы спрятать меню на  странице коллекции
   z-index: 5;
   position: relative;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
+.products {
+  width: calc(100% - #{rem(330)});
+  
+  @include mq(md) {
+    width: 100%;
+  }
 }

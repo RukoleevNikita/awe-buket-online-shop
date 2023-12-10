@@ -26,7 +26,9 @@ export default function Collection({params}) {
             <Categories selectCategory={category} />
           </nav>
         </div>
-        {loading || <ProductCollection data={productCollection.length ? productCollection : []} category={category} />}
+        <div className={styles.products}>
+          {loading || <ProductCollection data={productCollection.length ? productCollection : []} category={category} />}
+        </div>
       </div>
     </Container>
   );

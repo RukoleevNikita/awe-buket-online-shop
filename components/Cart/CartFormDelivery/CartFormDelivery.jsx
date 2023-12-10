@@ -11,41 +11,41 @@ export const CartFormDelivery = () => {
     nameField: '',
     phoneField: '',
     dateField: '',
-    timeField: '',
+    timeField: ''
   });
   const formDeliveryDataHandler = (data, field) => {
     switch (field) {
-    case 'nameField':
-      setFormDeliveryData(prevData => ({
-        ...prevData,
-        nameField: data,
-      }));
-      break;
-    case 'phoneField':
-      setFormDeliveryData(prevData => ({
-        ...prevData,
-        phoneField: data,
-      }));
-      break;
-    case 'dateField':
-      setFormDeliveryData(prevData => ({
-        ...prevData,
-        dateField: data,
-      }));
-      break;
-    case 'timeField':
-      setFormDeliveryData(prevData => ({
-        ...prevData,
-        timeField: data,
-      }));
-      break;
-    default:
-      return null;
+      case 'nameField':
+        setFormDeliveryData(prevData => ({
+          ...prevData,
+          nameField: data
+        }));
+        break;
+      case 'phoneField':
+        setFormDeliveryData(prevData => ({
+          ...prevData,
+          phoneField: data
+        }));
+        break;
+      case 'dateField':
+        setFormDeliveryData(prevData => ({
+          ...prevData,
+          dateField: data
+        }));
+        break;
+      case 'timeField':
+        setFormDeliveryData(prevData => ({
+          ...prevData,
+          timeField: data
+        }));
+        break;
+      default:
+        return null;
     }
   };
   const options = ['Option 1', 'Option 2', 'Option 3'];
   console.log(formDeliveryData);
-  return   (
+  return (
     <form>
       <div className={styles.title}>Самовывоз</div>
       <Input
@@ -56,37 +56,31 @@ export const CartFormDelivery = () => {
         onChange={e => formDeliveryDataHandler(e.target.value, 'nameField')}
       />
       {/* переписать стили */}
-      <div className={styles.inputContainer}>
-        <label>Контактный телефон (Заказчика)</label>
-        <InputMask
-          alwaysShowMask={true}
-          name="phoneField"
-          mask="+7(999)999-99-99"
-          value={formDeliveryData.phoneField}
-          onChange={e => formDeliveryDataHandler(e.target.value, 'phoneField')}
-        />
-      </div>
-      <div className={styles.paramsDelivery}>
-        <Input
-          label="Дата самовывоза"
-          type="date"
-          name="dateField"
-          value={formDeliveryData.dateField}
-          onChange={e => formDeliveryDataHandler(e.target.value, 'dateField')}
-        />
-        <Select
-          label="Время самовывоза"
-          options={options}
-          name="timeField"
-          value={formDeliveryData.timeField}
-          onChange={e => formDeliveryDataHandler(e, 'timeField')}
-        />
-      </div>
+      <Input
+        label="Контактный телефон (Заказчика)"
+        name="phoneField"
+        mask="+7(999)999-99-99"
+        value={formDeliveryData.phoneField}
+        onChange={e => formDeliveryDataHandler(e.target.value, 'phoneField')}
+      />
+      <Input
+        label="Дата самовывоза"
+        type="date"
+        name="dateField"
+        value={formDeliveryData.dateField}
+        onChange={e => formDeliveryDataHandler(e.target.value, 'dateField')}
+      />
+      <Select
+        label="Время самовывоза"
+        options={options}
+        name="timeField"
+        value={formDeliveryData.timeField}
+        onChange={e => formDeliveryDataHandler(e, 'timeField')}
+      />
       <Button type="submit">Оформить заказ</Button>
     </form>
   );
 };
-
 
 // Дата и время на которые нужен заказ
 // Сам заказ

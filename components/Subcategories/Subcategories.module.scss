@@ -18,6 +18,10 @@
     padding: 0 rem(10);
     transition: 0.3s;
 
+    @include mq(md) {
+      width: 100%;
+    }
+
     &:hover {
       background-color: #56392F;
       color: white;
