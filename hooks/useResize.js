@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 export const useResize = () => {
-  const [width, setWidth] = useState(1920);
+  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1920);
 
   useEffect(() => {
     setWidth(window.innerWidth);

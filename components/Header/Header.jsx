@@ -25,7 +25,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    console.log(isClickHamburger);
+    // console.log(isClickHamburger);
   }, [isClickHamburger]);
 
   return (
