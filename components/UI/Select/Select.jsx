@@ -41,7 +41,8 @@ export const Select = ({ label, options, onChange }) => {
         <input className={styles.select__input} type="hidden" />
         <div
           className={`${styles.select__head} ${
-            activeList ? styles.select__head_arrow_down : styles.select__head_arrow_up
+            activeList ? styles.select__head_arrow_down : 
+              styles.select__head_arrow_up
           }`}
           ref={ref}
         >

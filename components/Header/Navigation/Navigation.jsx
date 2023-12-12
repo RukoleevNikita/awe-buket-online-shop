@@ -92,62 +92,6 @@ export function Navigation({isActive, disabledMenu}) {
           </ul>
         </Container>
       </nav>
-
-      {/*<nav className={styles.customNavigation} style={{ opacity: scroll ? '1' : '0' }}>*/}
-      {/*  <Container>*/}
-      {/*    <div className={styles.customNavigation__wrapper}>*/}
-      {/*      <ul className={styles.customNavigation__list}>*/}
-      {/*        <li>*/}
-      {/*          <Link to="/">*/}
-      {/*            <img src={logo} className={styles.navigation__logo} alt="logo" />*/}
-      {/*          </Link>*/}
-      {/*        </li>*/}
-      {/*        <li ref={hoverOfferBlock}>*/}
-      {/*          <CustomLink to="/collection" className={setActive}>*/}
-      {/*            <Icon id="squares" />*/}
-      {/*            <span>Каталог</span>*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/corporative-clients" className={setActive}>*/}
-      {/*            Корпоративным клиентам*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/delivery" className={setActive}>*/}
-      {/*            Доставка и оплата*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/occasion" className={setActive}>*/}
-      {/*            Повод*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/about-us" className={setActive}>*/}
-      {/*            О нас*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/contacts" className={setActive}>*/}
-      {/*            Контакты*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <CustomLink to="/questions" className={setActive}>*/}
-      {/*            Вопросы и ответы*/}
-      {/*          </CustomLink>*/}
-      {/*        </li>*/}
-      {/*        <li>*/}
-      {/*          <Link to="/cart">*/}
-      {/*            <Icon id="cartRed" />*/}
-      {/*            {totalPrice} ₽*/}
-      {/*          </Link>*/}
-      {/*        </li>*/}
-      {/*      </ul>*/}
-      {/*    </div>*/}
-      {/*  </Container>*/}
-      {/*</nav>*/}
     </>
   );
 }

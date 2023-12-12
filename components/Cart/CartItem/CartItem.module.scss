@@ -71,7 +71,10 @@
             margin-right: 0;
         }
     }
-    &__del {
+
+    &__del img {
+        width: rem(24);
+        height: auto;
         cursor: pointer;
         order: 1;
     }

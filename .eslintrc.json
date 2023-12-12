@@ -3,7 +3,7 @@
   "rules": {
     "semi": ["error", "always"],
     "quotes": ["error", "single"],
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "SwitchCase": 1}],
     "object-curly-newline": ["error", { "consistent": true }],
     "function-paren-newline": ["error", "multiline-arguments"],
     "@typescript-eslint/no-unsafe-argument": 0,
@@ -23,7 +23,8 @@
       "error",
       {
         "code": 150
-      }
+      },
+      {"ignoreTemplateLiterals": true, "ignoreStrings": true}
     ],
     "no-param-reassign": 0,
     "no-return-await": 0,

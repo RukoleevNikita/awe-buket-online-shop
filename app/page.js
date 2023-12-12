@@ -5,9 +5,6 @@
 // import offer_1 from '../../assets/images/offer_1.jpg';
 // import offer_2 from '../../assets/images/offer_2.jpg';
 
-// import { Container, Banner, OfferBlock, Icon, CustomLink } from '../components';
-
-
 import styles from './page.module.scss';
 import { Banner, Container, Icon } from '@/components';
 
@@ -20,7 +17,8 @@ export default function Home () {
         <Container>
           <div className={styles.main_title}>
             <span> ✦ омск ✦ </span>
-            <span>Мы создаем настроение и оригинаотные подарки для Ваших близких</span>
+            <span>Мы создаем настроение и оригинаотные 
+              подарки для Ваших близких</span>
           </div>
           <div className={styles.main__content}>
             {/*<OfferBlock*/}
@@ -51,10 +49,14 @@ export default function Home () {
             {/*</div>*/}
             {/*<div className={styles.subtitle}> ~ о нас ~ </div>*/}
             <div style={{ textAlign: 'justify' }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates explicabo quisquam distinctio alias
-              beatae commodi consequatur maiores, atque, molestias suscipit maxime eos sit vel aliquam libero aspernatur.
-              Qui, mollitia ipsam. Quibusdam deserunt ad quisquam cumque labore quaerat porro ipsam quidem, eum officiis
-              ducimus eligendi consequatur. Vel qui, eligendi aliquam, eveniet facilis cumque amet ipsa eos doloribus
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Voluptates explicabo quisquam distinctio alias
+              beatae commodi consequatur maiores, atque, molestias suscipit 
+              maxime eos sit vel aliquam libero aspernatur.
+              Qui, mollitia ipsam. Quibusdam deserunt ad quisquam cumque 
+              labore quaerat porro ipsam quidem, eum officiis
+              ducimus eligendi consequatur. Vel qui, eligendi aliquam, 
+              eveniet facilis cumque amet ipsa eos doloribus
               dicta nam accusantium autem?</div>
           </div>
         </Container>

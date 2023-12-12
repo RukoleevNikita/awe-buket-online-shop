@@ -7,12 +7,9 @@ import { shallow } from 'zustand/shallow';
 import { CartFormDelivery, CartFormPickup, CartItem } from '@/components/Cart';
 import { useState } from 'react';
 
-
-export default function Cart () {
-  const [ cart, minusItem ] = useStore(state => [
-    state.cart,
-    state.minusItem
-  ], shallow);
+export default function Cart() {
+  const [cart, minusItem] = useStore(state => 
+    [state.cart, state.minusItem], shallow);
   const [isChecked, setIsChecked] = useState(false);
 
   const toggleHandler = () => setIsChecked(!isChecked);
@@ -32,7 +29,9 @@ export default function Cart () {
                   {/*{isChecked ? <p>Доставка</p> : <p>Самовывоз</p>}*/}
                 </div>
 
-                <div>{isChecked ? <CartFormDelivery /> : <CartFormPickup />}</div>
+                <div>
+                  {isChecked ? <CartFormDelivery /> : <CartFormPickup />}
+                </div>
                 {/*{isChecked ? <CartFormDelivery /> : <CartFormPickup />}*/}
               </div>
               <div className={styles.order}>
@@ -56,4 +55,4 @@ export default function Cart () {
       </MainWrapper>
     </Container>
   );
-};
+}

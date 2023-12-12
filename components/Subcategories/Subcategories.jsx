@@ -4,26 +4,19 @@ import styles from './Subcategories.module.scss';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const SUBCATEGORIES = [
+  {
+    Кому: ['Маме', 'Любимой', 'Мужчине', 'Коллеге']
+  },
+  {
+    Событие: ['День рождения', 'Свадьба', 'Рождение ребенка', 'Выпускной', 'Последний звонок', 'Годовщина']
+  },
+  {
+    Праздник: ['1 сентября, учителю', 'День матери', 'Новый год', '14 февраля', '23 февраля', '8 марта', 'День семьи']
+  }
+];
+
 export const Subcategories = ({ selectCategory }) => {
-  const SUBCATEGORIES = [
-    {
-      Кому: ['Маме', 'Любимой', 'Мужчине', 'Коллеге'],
-    },
-    {
-      Событие: ['День рождения', 'Свадьба', 'Рождение ребенка', 'Выпускной', 'Последний звонок', 'Годовщина'],
-    },
-    {
-      Праздник: [
-        '1 сентября, учителю',
-        'День матери',
-        'Новый год',
-        '14 февраля',
-        '23 февраля',
-        '8 марта',
-        'День семьи',
-      ],
-    },
-  ];
 
   const [columns, setColumns] = useState([]);
 
@@ -46,7 +39,8 @@ export const Subcategories = ({ selectCategory }) => {
       );
     });
     setColumns(columnsData);
-  }, []);
+  }, [SUBCATEGORIES, selectCategory, trigger]);
 
-  return <nav className={trigger ? styles.subcategories__navigation : styles.subcategories__dropdownList}>{columns}</nav>;
+  return <nav className={trigger ? styles.subcategories__navigation : 
+    styles.subcategories__dropdownList}>{columns}</nav>;
 };

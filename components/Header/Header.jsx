@@ -81,16 +81,21 @@ const Header = () => {
             <div className={styles.header__logo}>
               <Link href="/" onClick={disabledMenu}>
                 <Image src={logo} className={styles.header__logoImage} alt="logo" />
-                <span className={styles.header__logoText}>Awebuket | Съедобные букеты | Клубника Омск</span>
+                <span className={styles.header__logoText}>
+                  Awebuket | Съедобные букеты | Клубника Омск</span>
               </Link>
             </div>
 
-            {size < 768 ? <Hamburger onToggle={()=> onHamburgerToggleHandler() } isClickHamburger={isClickHamburger}  /> : null}
+            {size < 768 ? 
+              <Hamburger onToggle={()=> onHamburgerToggleHandler() } 
+                isClickHamburger={isClickHamburger}  /> : 
+              null}
 
             <div className={styles.header__basket}>
               <Link href="/cart">
                 <Button className={styles.header__basketBtn}>
-                  {cart.totalPrice} ₽<span className={styles.header__basketLine}></span>
+                  {cart.totalPrice} ₽
+                  <span className={styles.header__basketLine}></span>
                   <Icon id="cart" />
                   {cart.totalCount}
                 </Button>

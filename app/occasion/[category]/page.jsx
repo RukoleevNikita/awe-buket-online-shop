@@ -7,7 +7,8 @@ import { shallow } from 'zustand/shallow';
 import { useEffect } from 'react';
 
 export default function Occasion({params}) {
-  const [ productCollection, getProductCollection, loading ] = useStore(state => [
+  const [ productCollection, 
+    getProductCollection, loading ] = useStore(state => [
     state.productCollection,
     state.getProductCollection,
     state.loading
@@ -23,10 +24,13 @@ export default function Occasion({params}) {
       <div className={styles.wrapper}>
         <div className={styles.ocation}>
           <nav>
-            <Subcategories selectCategory={decodeURIComponent(params.category)} />
+            <Subcategories 
+              selectCategory={decodeURIComponent(params.category)} 
+            />
           </nav>
         </div>
-        {loading || <ProductCollection data={productCollection.length ? productCollection : []} />}
+        {loading || <ProductCollection data={productCollection.length ? 
+          productCollection : []} />}
       </div>
     </Container>
   );

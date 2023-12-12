@@ -7,7 +7,8 @@ import { useEffect } from 'react';
 import { useStore } from '@/store';
 import { shallow } from 'zustand/shallow';
 export default function Collection({params}) {
-  const [ productCollection, getProductCollection, loading ] = useStore(state => [
+  const [ productCollection, getProductCollection, loading ] = 
+  useStore(state => [
     state.productCollection,
     state.getProductCollection,
     state.loading
@@ -27,7 +28,8 @@ export default function Collection({params}) {
           </nav>
         </div>
         <div className={styles.products}>
-          {loading || <ProductCollection data={productCollection.length ? productCollection : []} category={category} />}
+          {loading || <ProductCollection data={productCollection.length ? 
+            productCollection : []} category={category} />}
         </div>
       </div>
     </Container>

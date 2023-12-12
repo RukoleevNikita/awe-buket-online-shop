@@ -11,7 +11,8 @@ export function ProductCollection({ data, category }) {
       {/*  :'Товары в катеогрии отсутствуют'*/}
       {/*}*/}
       {data.length
-        ? data.map(el => <ProductCard key={el._id} {...el} category={category} />)
+        ? data.map(el => 
+          <ProductCard key={el._id} {...el} category={category} />)
         :'Товары в катеогрии отсутствуют'
       }
     </div>
