@@ -11,11 +11,10 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "2gis-maps": "^3.7.3",
-    "axios": "^0.27.2",
     "mongoose": "^7.6.3",
-    "next": "13.5.6",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "^13.5.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-input-mask": "^2.0.4",
     "react-redux": "^8.1.3",
     "react-router-dom": "^6.3.0",
@@ -24,7 +23,7 @@
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "13.5.6",
+    "eslint-config-next": "^13.5.6",
     "prettier": "^2.8.8",
     "sass": "^1.69.4"
   }
