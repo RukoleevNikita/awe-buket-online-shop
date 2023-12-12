@@ -8,5 +8,5 @@ export * from './MainWrapper/MainWrapper';
 export * from './Banner';
 // export * from './OfferBlock';
 export * from './UI';
-export * from './Map/Map';
+// export * from './Map/Map';
 export * from './Categories/Categories';

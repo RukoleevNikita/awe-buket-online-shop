@@ -1,4 +1,4 @@
-import { Container , MainWrapper, Map } from '@/components';
+import { Container , MainWrapper } from '@/components';
 import styles from './Delivery.module.scss';
 
 export default function Delivery () {
@@ -43,7 +43,6 @@ export default function Delivery () {
               </p>
             </div>
             <div className={styles.delivery_map}>
-              <Map />
             </div>
           </div>
         </div>
