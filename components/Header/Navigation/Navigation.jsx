@@ -30,22 +30,6 @@ export function Navigation({isActive, disabledMenu}) {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  const onMouseEnter = () => {
-    if (window.innerWidth < 768) {
-      setDropdown(false);
-    } else {
-      setDropdown(true);
-    }
-  };
-
-  const onMouseLeave = () => {
-    if (window.innerWidth < 768) {
-      setDropdown(false);
-    } else {
-      setDropdown(false);
-    }
-  };
-
   if(isActive) {
     classes.push(styles.active);
   }

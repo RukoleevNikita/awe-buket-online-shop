@@ -22,11 +22,6 @@ export const CartItem = item => {
     useStore(state => 
       [state.cart, state.addItem, state.removeItem, state.minusItem], shallow);
 
-  const onClickRemove = () => {
-    // if (window.confirm('Ты действительно хочешь удалить товар?')) {
-    //   dispatch(removeItem(item.id));
-    // }
-  };
   return (
     <div className={styles.cartItem}>
       <img src={item.previewLinks[0]} alt="" />
