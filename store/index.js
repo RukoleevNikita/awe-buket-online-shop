@@ -1,15 +1,17 @@
 import { create } from 'zustand';
 
-const BASE_URL = 'http://localhost:3000/api';
-const calcTotalPrice = items => items.reduce((sum, obj) => obj.price * obj.count + sum, 0);
-const calcTotalCount = items => items.reduce((sum, item) => sum + item.count, 0);
+const BASE_URL = '/api';
+const calcTotalPrice = items => 
+  items.reduce((sum, obj) => obj.price * obj.count + sum, 0);
+const calcTotalCount = items => 
+  items.reduce((sum, item) => sum + item.count, 0);
 export const useStore = create()((set, get) => ({
   product: [],
   productCollection: [],
   cart: {
     items: [],
     totalPrice: 0,
-    totalCount: 0,
+    totalCount: 0
   },
   loading: false,
   getProductCollection: async (key, category) => {
@@ -17,15 +19,16 @@ export const useStore = create()((set, get) => ({
     let productCollection = [];
     let req;
     switch (key) {
-    case 'collection':
-      req = await fetch(`${BASE_URL}/${key}/${category}`);
-      productCollection = await req.json();
-      break;
-    case 'occasion':
-      req = await fetch(`${BASE_URL}/${key}/${category}`);
-      productCollection = await req.json();
-      break;
-    default: null;
+      case 'collection':
+        req = await fetch(`${BASE_URL}/${key}/${category}`);
+        productCollection = await req.json();
+        break;
+      case 'occasion':
+        req = await fetch(`${BASE_URL}/${key}/${category}`);
+        productCollection = await req.json();
+        break;
+      default:
+        null;
     }
     set({ productCollection, loading: false });
   },
@@ -46,7 +49,7 @@ export const useStore = create()((set, get) => ({
     } else {
       items.push({
         ...item,
-        count: 1,
+        count: 1
       });
     }
     const { cart } = get();
@@ -55,7 +58,7 @@ export const useStore = create()((set, get) => ({
         items,
         totalPrice: calcTotalPrice(cart.items),
         totalCount: calcTotalCount(cart.items)
-      },
+      }
     });
   },
   minusItem(id) {
@@ -72,7 +75,7 @@ export const useStore = create()((set, get) => ({
         items,
         totalPrice: calcTotalPrice(cart.items),
         totalCount: calcTotalCount(cart.items)
-      },
+      }
     });
   },
   removeItem(id) {
@@ -83,8 +86,7 @@ export const useStore = create()((set, get) => ({
         items: updatedElements,
         totalPrice: calcTotalPrice(updatedElements),
         totalCount: calcTotalCount(updatedElements)
-      },
+      }
     });
-  },
+  }
 }));
-
