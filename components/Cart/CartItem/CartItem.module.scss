@@ -5,11 +5,23 @@
 .cartItem {
     margin: rem(30) 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     @include mq(sm) {
         flex-direction: column;
+    }
+
+    img {
+         height: rem(100);
+         width: rem(100);
+         border-radius: rem(30);
+ 
+         @include mq(sm) {
+             width: rem(300);
+             height: rem(300);
+             margin-bottom: rem(15);
+         }
     }
 
     &__name {
@@ -63,16 +75,5 @@
         cursor: pointer;
         order: 1;
     }
-   img {
-        height: rem(144);
-        width: rem(144);
-        border-radius: rem(30);
-
-        @include mq(sm) {
-            width: rem(300);
-            height: rem(300);
-            margin-bottom: rem(15);
-        }
-   }
    
 }
