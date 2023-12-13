@@ -21,7 +21,7 @@ import { Categories, Container, Icon } from '@/components';
 import Link from 'next/link';
 import { Subcategories } from '@/components/Subcategories/Subcategories';
 
-export function Navigation({isActive, disabledMenu}) {
+export function Navigation({ isActive, disabledMenu }) {
   const classes = [styles.navigation];
   const pathname = usePathname();
   const [click, setClick] = useState(false);
@@ -30,17 +30,55 @@ export function Navigation({isActive, disabledMenu}) {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  if(isActive) {
+  if (isActive) {
     classes.push(styles.active);
   }
 
+  const menuItems = [
+    {
+      id: 1,
+      name: 'Корпоративным клиентам',
+      link: '/corporative-clients'
+    },
+    {
+      id: 2,
+      name: 'Доставка и оплата',
+      link: '/delivery'
+    },
+    {
+      id: 3,
+      name: 'Повод',
+      chapter: '/occasion',
+      link: '/occasion/Маме',
+      children: (
+        <div className={pathname.split('/').includes('occasion') ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>
+          <Subcategories params={''} />
+        </div>
+      )
+    },
+    {
+      id: 4,
+      name: 'О нас',
+      link: '/about-us'
+    },
+    {
+      id: 5,
+      name: 'Контакты',
+      link: '/contacts'
+    },
+    {
+      id: 6,
+      name: 'Вопросы и ответы',
+      link: '/questions'
+    }
+  ];
 
   return (
     <>
       <nav className={classes.join(' ')}>
         <Container>
           <ul className={styles.navigation__list}>
-            <li className={styles.navigation__list_item} style={{ position: 'relative' }}>
+            <li className={styles.navigation__list_catlog}>
               <Link style={{ cursor: 'default' }} href="/collection/Наборы клубники в шоколаде" onClick={disabledMenu}>
                 <Icon id="squares" />
                 <span>Каталог</span>
@@ -50,29 +88,33 @@ export function Navigation({isActive, disabledMenu}) {
               </div>
             </li>
 
-            <li className={styles.navigation__list_item}>
-              <Link href="/corporative-clients" onClick={disabledMenu}>Корпоративным клиентам</Link>
-            </li>
-            <li className={styles.navigation__list_item}>
-              <Link href="/delivery" onClick={disabledMenu}>Доставка и оплата</Link>
-            </li>
-            <li className={styles.navigation__list_item} style={{ position: 'relative' }}>
-              <Link style={{ cursor: 'default' }} href="/occasion/Маме" onClick={disabledMenu}>
-                <span>Повод</span>
-              </Link>
-              <div className={pathname.split('/').includes('occasion') ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>
-                <Subcategories params={''} />
-              </div>
-            </li>
-            <li className={styles.navigation__list_item} style={{ position: 'relative', padding: '15px 0' }}>
-              <Link href="/about-us" onClick={disabledMenu}>О нас</Link>
-            </li>
-            <li className={styles.navigation__list_item}>
-              <Link href="/contacts" onClick={disabledMenu}>Контакты</Link>
-            </li>
-            <li className={styles.navigation__list_item}>
-              <Link href="/questions" onClick={disabledMenu}>Вопросы и ответы</Link>
-            </li>
+            {menuItems.map(item => {
+              let cls = [styles.navigation__list_item];
+              let link = (item.link).slice(1, -1).split('/')[0];
+              if (pathname.includes(link)) {
+                cls.push(styles.active);
+              }
+              if (item.children) {
+                return (
+                  <li key={item.id} className={cls.join(' ')}>
+                    <Link href={item.link} onClick={disabledMenu}>
+                      {item.name}
+                    </Link>
+                    <div className={pathname.split('/').includes('occasion') ? styles.hideDropdownOccasionList : styles.dropdownOccasionList}>
+                      <Subcategories params={''} />
+                    </div>
+                  </li>
+                );
+              }
+
+              return (
+                <li key={item.id} className={cls.join(' ')}>
+                  <Link href={item.link} onClick={disabledMenu}>
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </Container>
       </nav>
