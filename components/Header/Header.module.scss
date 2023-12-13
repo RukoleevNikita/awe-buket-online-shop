@@ -147,7 +147,8 @@
       padding: rem(10);
       background-color: transparent;
       color: #fff;
-      display: inline-block;
+      display: flex;
+      align-items: center;
     }
 
     &Line {
@@ -159,8 +160,8 @@
       margin-right: rem(14);
     }
 
-    svg {
-      margin-right: rem(5);
+    img {
+      margin-right: rem(5) !important;
     }
   }
   &__middle {

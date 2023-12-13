@@ -31,22 +31,33 @@
 .category__dropdownList {
   border-radius: rem(10);
   position: absolute;
-  top: rem(56);
+  top: rem(46);
   display: grid;
   grid-template-columns: rem(231) rem(231) rem(231);
+  gap: rem(10);
   background: #fff;
   color: #cf3128;
-  width: rem(693);
   left: 0;
   box-shadow: 0 0 rem(15) rgba(0, 0, 0, 0.1);
   padding: rem(10);
   z-index: 10;
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: rem(15);
+    top: rem(-15);
+    left: 0;
+    background-color: transparent;
+  }
   a {
     display: flex;
     align-items: center;
     color: #56392f;
     border-radius: rem(10);
     justify-content: flex-start;
+    transition: all ease 0.3s;
 
     span {
       padding: rem(7);
@@ -56,7 +67,6 @@
       color: white;
       border-radius: rem(10);
       background: #56392f;
-      transition: 0.4s;
     }
   }
 }
