@@ -21,24 +21,19 @@ const ProductSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
   category: {
     type: String,
     required: true,
   },
+  archived: {
+    type: Boolean,
+    required: true
+  },
   occasion: {
     type: Array,
     required: false,
-  },
-  viewsCount: {
-    type: Number,
-    default: 0,
-  },
+  }
 });
 
-const CardProduct = mongoose.models.CardProduct || mongoose.model('CardProduct', ProductSchema);
+const CardProduct = mongoose.models.products || mongoose.model('products', ProductSchema);
 export default CardProduct;
