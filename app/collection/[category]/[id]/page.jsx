@@ -1,6 +1,6 @@
 'use client';
 import styles from './Product.module.scss';
-import { useStore } from '@/store';
+import useBasketStore from '@/store/useBasketStore';
 import { shallow } from 'zustand/shallow';
 import { Slider } from '@/components/Slider/Slider';
 import { Button, Container } from '@/components';
@@ -8,11 +8,11 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function Product({ params }) {
-  const [productCollection, getProduct, cart, addItem, removeItem] = useStore(
+  const [productCollection, getProduct, loading, product, 
+    cart, addItem, removeItem] = useBasketStore(
     state => 
       [state.productCollection, state.getProduct, state.loading, 
-        state.product, state.cart, state.addItem, state.removeItem],
-    shallow
+        state.product, state.cart, state.addItem, state.removeItem]
   );
   const [productDetails, setProductDetails] = useState(false);
   const [inBasket, setInBasket] = useState(false);
@@ -20,6 +20,7 @@ export default function Product({ params }) {
   const { id } = params;
 
   useEffect(() => {
+    console.log(cart);
     setInBasket(cart.items.some(el => el._id === id));
     const getProductDetails = async () => {
       try {

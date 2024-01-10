@@ -4,11 +4,11 @@ import { Categories, Container, ProductCollection } from '@/components';
 import useSWR from 'swr';
 import styles from './Collection.module.scss';
 import { useEffect } from 'react';
-import { useStore } from '@/store';
+import useBasketStore from '@/store/useBasketStore';
 import { shallow } from 'zustand/shallow';
 export default function Collection({params}) {
   const [ productCollection, getProductCollection, loading ] = 
-  useStore(state => [
+  useBasketStore(state => [
     state.productCollection,
     state.getProductCollection,
     state.loading

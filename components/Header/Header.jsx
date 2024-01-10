@@ -4,7 +4,7 @@ import Image from 'next/image';
 import logo from '@/public/images/logo.png';
 import styles from './Header.module.scss';
 import { Navigation } from './Navigation/Navigation';
-import { useStore } from '@/store';
+import useBasketStore from '@/store/useBasketStore';
 import { useResize } from '@/hooks/useResize';
 import { shallow } from 'zustand/shallow';
 import { Button, Container, Icon } from '@/components';
@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 
 const Header = () => {
   const [isClickHamburger, setIsClickHamburger] = useState(false);
-  const [cart] = useStore(state => [state.cart], shallow);
+  const [cart] = useBasketStore(state => [state.cart]);
   const size = useResize();
 
   const onHamburgerToggleHandler = () => {

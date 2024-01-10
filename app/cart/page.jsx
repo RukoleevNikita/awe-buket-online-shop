@@ -2,14 +2,14 @@
 
 import styles from './Cart.module.scss';
 import { Container, MainWrapper } from '@/components';
-import { useStore } from '@/store';
+import useBasketStore from '@/store/useBasketStore';
 import { shallow } from 'zustand/shallow';
 import { CartFormDelivery, CartFormPickup, CartItem } from '@/components/Cart';
 import { useState } from 'react';
 
 export default function Cart() {
-  const [cart, minusItem] = useStore(state => 
-    [state.cart, state.minusItem], shallow);
+  const [cart, minusItem] = useBasketStore(state => 
+    [state.cart, state.minusItem]);
   const [isChecked, setIsChecked] = useState(false);
 
   const toggleHandler = () => setIsChecked(!isChecked);

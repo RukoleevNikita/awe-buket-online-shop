@@ -12,15 +12,15 @@ import Image from 'next/image';
 
 import styles from './CartItem.module.scss';
 import { Button } from '@/components';
-import { useStore } from '@/store';
+import useBasketStore from '@/store/useBasketStore';
 import { shallow } from 'zustand/shallow';
 
 import TrashIcon from '../../../public/icons/trash.svg';
 
 export const CartItem = item => {
   const [cart, addItem, removeItem, minusItem] = 
-    useStore(state => 
-      [state.cart, state.addItem, state.removeItem, state.minusItem], shallow);
+    useBasketStore(state => 
+      [state.cart, state.addItem, state.removeItem, state.minusItem]);
 
   return (
     <div className={styles.cartItem}>

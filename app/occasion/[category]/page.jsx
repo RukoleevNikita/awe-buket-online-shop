@@ -2,17 +2,17 @@
 import styles from './Occasion.module.scss';
 import { Container, ProductCollection } from '@/components';
 import { Subcategories } from '@/components/Subcategories/Subcategories';
-import { useStore } from '@/store';
+import useBasketStore from '@/store/useBasketStore';
 import { shallow } from 'zustand/shallow';
 import { useEffect } from 'react';
 
 export default function Occasion({params}) {
   const [ productCollection, 
-    getProductCollection, loading ] = useStore(state => [
+    getProductCollection, loading ] = useBasketStore(state => [
     state.productCollection,
     state.getProductCollection,
     state.loading
-  ], shallow);
+  ]);
   const category = decodeURIComponent(params.category);
 
   useEffect(() => {
