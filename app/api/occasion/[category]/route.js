@@ -1,6 +1,6 @@
-import CardProduct from '../../../../models/CardProduct';
 import { NextResponse } from 'next/server';
 import connectMongo from '@/lib/mongo/mongodb';
+import CardProduct from '@/models/ProductSchema';
 export async function GET(request, {params}) {
   try {
     const { category } = params;

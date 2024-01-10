@@ -27,13 +27,25 @@ const ProductSchema = new mongoose.Schema({
   },
   archived: {
     type: Boolean,
-    required: true
+    required: true,
   },
   occasion: {
     type: Array,
     required: false,
-  }
+  },
+  available: {
+    type: Boolean,
+    required: false,
+  },
+  popular: {
+    type: Boolean,
+    required: true,
+  },
+  viewsCount: {
+    type: Number,
+    default: 0,
+  },
 });
 
-const CardProduct = mongoose.models.products || mongoose.model('products', ProductSchema);
+const CardProduct = mongoose.models.products ||mongoose.model('products', ProductSchema);
 export default CardProduct;
