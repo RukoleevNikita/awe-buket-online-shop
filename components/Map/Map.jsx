@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState, useMemo } from 'react';
 
 import styles from './Map.module.scss';
 
-export function Map() {
+export default function Map() {
   const mapContainer = useRef(null);
   const map = useRef(null);
 

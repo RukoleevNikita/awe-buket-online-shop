@@ -1,5 +1,10 @@
+import dynamic from 'next/dynamic';
+
 import { Container , MainWrapper } from '@/components';
+
 import styles from './Delivery.module.scss';
+
+const Map = dynamic(() => import('@/components/Map/Map'), { ssr: false });
 
 export default function Delivery () {
   return (
@@ -42,8 +47,7 @@ export default function Delivery () {
                   21:00 до 00:00 - 500₽</span>
               </p>
             </div>
-            <div className={styles.delivery_map}>
-            </div>
+            <div className={styles.delivery_map}><Map /></div>
           </div>
         </div>
       </MainWrapper>
