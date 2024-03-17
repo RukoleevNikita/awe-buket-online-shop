@@ -4,6 +4,8 @@
 
 .header {
   position: relative;
+  flex: 0 0 auto;
+
   @include mq(md) {
     margin-bottom: rem(30);
   }
@@ -105,7 +107,7 @@
         }
         li:first-child {
           padding-right: rem(60);
-          
+
           @include mq(md) {
             padding-right: 0;
           }
@@ -122,7 +124,7 @@
       width: rem(90);
     }
     &Text {
-      @include mq(md){
+      @include mq(md) {
         display: none;
       }
     }
@@ -136,7 +138,7 @@
     position: relative;
     font-size: rem(14);
     z-index: 1;
-    
+
     @include mq(md) {
       position: fixed;
       right: rem(15);

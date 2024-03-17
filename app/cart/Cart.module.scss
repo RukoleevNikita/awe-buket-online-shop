@@ -116,3 +116,12 @@
     }
   }
 }
+
+.empty {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: rem(24);
+    font-weight: 500;
+}

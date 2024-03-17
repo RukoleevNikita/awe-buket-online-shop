@@ -1,11 +1,12 @@
 'use client';
 import styles from './Product.module.scss';
 import useBasketStore from '@/store/useBasketStore';
-import { shallow } from 'zustand/shallow';
 import { Slider } from '@/components/Slider/Slider';
+import { ProductSlider } from '@/components/ProductSlider/ProductSlider';
 import { Button, Container } from '@/components';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { getPopularProducts } from '@/services';
 
 export default function Product({ params }) {
   const [productCollection, getProduct, loading, product, 
@@ -15,12 +16,13 @@ export default function Product({ params }) {
         state.product, state.cart, state.addItem, state.removeItem]
   );
   const [productDetails, setProductDetails] = useState(false);
+  const [popularProducts, setPopularProducts] = useState(null);
   const [inBasket, setInBasket] = useState(false);
   const path = usePathname();
   const { id } = params;
-
+    
   useEffect(() => {
-    console.log(cart);
+    
     setInBasket(cart.items.some(el => el._id === id));
     const getProductDetails = async () => {
       try {
@@ -35,6 +37,11 @@ export default function Product({ params }) {
       }
     };
     getProductDetails();
+    (async () => {
+      const data = await getPopularProducts();
+      setPopularProducts(data);
+    })();
+    
   }, [getProduct, productCollection, path, id, cart.totalCount, cart.items]);
 
   return (
@@ -50,7 +57,6 @@ export default function Product({ params }) {
                 className={styles.product__information_title}
               >{productDetails.name}</div>
               <div className={styles.product__information_description}>
-                <span>Состав: </span>
                 {productDetails.description}
               </div>
               <div 
@@ -65,15 +71,22 @@ export default function Product({ params }) {
               ) : (
                 <div className={styles.product__information_control}>
                   <Button onClick={() => addItem(productDetails)} style={{ backgroundColor: '#cf3128' }}>
-                    Добавить в корзину
+                    В корзину
                   </Button>
                 </div>
               )}
+              <ProductSlider
+                products={popularProducts}
+                title="Популярные товары"
+                slidesPerView={3}
+              />
             </div>
           </div>
         </Container>
       ) : (
-        <div>...Loading</div>
+        <Container>
+          <div>Загрзука</div>
+        </Container>
       )}
     </>
   );

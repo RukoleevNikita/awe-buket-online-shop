@@ -1,0 +1,11 @@
+@import '../../../styles/variables';
+@import '../../../styles/functions';
+@import '../../../styles/mixins';
+
+.Button {
+    background-color: #cf3128;
+    color: #fff;
+    box-sizing: border-box;
+    padding: rem(5) rem(8);
+    border-radius: rem(5);
+}

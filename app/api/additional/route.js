@@ -1,13 +1,10 @@
 import { NextResponse } from 'next/server';
 import connectMongo from '@/lib/mongo/mongodb';
-import CardProduct from '@/models/ProductSchema';
-export async function GET(request, {params}) {
+import AdditionalProduct from '@/models/AdditionalProductSchema';
+export async function GET(request, { params }) {
   try {
-    const { category } = params;
     await connectMongo();
-    const product = await CardProduct.find({
-      category: category
-    });
+    const product = await AdditionalProduct.find();
     return new NextResponse(JSON.stringify(product), { status: 200 });
   } catch (e) {
     console.log(e);

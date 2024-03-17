@@ -1,0 +1,1 @@
+export {getPopularProducts} from './getPopularProducts';

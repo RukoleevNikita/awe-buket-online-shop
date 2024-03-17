@@ -5,13 +5,15 @@
 .footer {
     position: relative;
     margin-top: rem(100);
+    flex: 0 0 auto;
+    padding: rem(57) 0 rem(70) 0;
 
     svg {
         &:first-child {
-            top: rem(-57);
+            top: 0;
         }   
         &:last-child {
-            bottom: rem(-70);
+            bottom: 0;
         }
     }
     & > svg {
